@@ -1,18 +1,19 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1728142576
+::res://::1728159843
 icon.png::CompressedTexture2D::8642138200847837670::1728085905::1728085917::1::::<><>::
-::res://images/::1728155769
+::res://images/::1728161318
+bricks.png::CompressedTexture2D::5423128896330336765::1728161318::1728161321::1::::<><>::
 shadow.png::CompressedTexture2D::8397880966539619362::1728155180::1728155182::1::::<><>::
-::res://images/New Folder/::1728155159
-::res://images/player/::1728156508
+::res://images/player/::1728156511
 idle_1.png::CompressedTexture2D::4286875236093828139::1728156418::1728156511::1::::<><>::
 idle_2.png::CompressedTexture2D::1730880770180718875::1728156508::1728156511::1::::<><>::
 run_1.png::CompressedTexture2D::2466528254111595158::1728155778::1728156030::1::::<><>::
 run_2.png::CompressedTexture2D::8692963973920943064::1728156027::1728156030::1::::<><>::
-::res://scenes/::1728087543
-::res://scenes/player/::1728156061
+::res://scenes/::1728160787
+game.tscn::PackedScene::7766036578941782258::1728160787::0::1::::<><>::uid://bx2jyrehfevui::::res://scenes/player/player.tscn
+::res://scenes/player/::1728160786
 player.gd::GDScript::-1::1728153064::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::4057092498117157460::1728156061::0::1::::<><>::res://scenes/player/player.gd<>res://images/player/player_idle_1.png<>res://images/player/player_idle_2.png<>uid://bbe2miexqgqcc::::res://images/player/run_1.png<>uid://dv3631wqdkqma::::res://images/player/run_2.png<>uid://bxqlb00owt0yo::::res://sounds/footsteps/footstep_1.wav<>uid://bpqvm4mylltqy::::res://sounds/footsteps/footstep_2.wav
+player.tscn::PackedScene::4057092498117157460::1728160786::0::1::::<><>::res://scenes/player/player.gd<>uid://b2cuhdnnhn6dr::::res://images/player/idle_1.png<>uid://ywpmasbgiulv::::res://images/player/idle_2.png<>uid://bbe2miexqgqcc::::res://images/player/run_1.png<>uid://dv3631wqdkqma::::res://images/player/run_2.png<>uid://bxqlb00owt0yo::::res://sounds/footsteps/footstep_1.wav<>uid://bpqvm4mylltqy::::res://sounds/footsteps/footstep_2.wav
 ::res://sounds/::1728142582
 ::res://sounds/footsteps/::1728142611
 footstep_1.wav::AudioStreamWAV::4034465156517274138::1728142588::1728142611::1::::<><>::

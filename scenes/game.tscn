@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://div6qt6nqcny5"]
+
+[ext_resource type="Shader" path="res://shaders/scroll.gdshader" id="1_3loud"]
+[ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
+[ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy38s"]
+shader = ExtResource("1_3loud")
+shader_parameter/motion = Vector2(15, 15)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="Game" type="Node"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.47788, 0.47788, 0.47788, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xy38s")
+texture = ExtResource("2_mpcv1")
+centered = false
+region_enabled = true
+region_rect = Rect2(-254, -44, 1152, 648)
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Objects" instance=ExtResource("1_rbhu5")]
+position = Vector2(236, 230)

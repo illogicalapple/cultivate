@@ -205,8 +205,8 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_coimn"]
 _data = {
 &"run": SubResource("Animation_xq7ms"),
-&"RESET": SubResource("Animation_ao0px"),
-&"idle": SubResource("Animation_s5avq")
+&"idle": SubResource("Animation_s5avq"),
+&"RESET": SubResource("Animation_ao0px")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8fth"]
