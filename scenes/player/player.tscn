@@ -1,21 +1,60 @@
-[gd_scene load_steps=15 format=3 uid="uid://bx2jyrehfevui"]
+[gd_scene load_steps=25 format=3 uid="uid://bx2jyrehfevui"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_nmkp4"]
-[ext_resource type="Texture2D" uid="uid://b2cuhdnnhn6dr" path="res://images/player/idle_1.png" id="2_o3btu"]
-[ext_resource type="Texture2D" uid="uid://ywpmasbgiulv" path="res://images/player/idle_2.png" id="3_g0uq2"]
-[ext_resource type="Texture2D" uid="uid://bbe2miexqgqcc" path="res://images/player/run_1.png" id="4_a47lj"]
-[ext_resource type="Texture2D" uid="uid://dv3631wqdkqma" path="res://images/player/run_2.png" id="5_we3af"]
+[ext_resource type="Texture2D" uid="uid://drv84wxu5yyvy" path="res://images/shadow.png" id="3_ojwb4"]
+[ext_resource type="Texture2D" uid="uid://cpe0fkpomu8hf" path="res://images/player/weapon_idle_1.png" id="4_vrc5h"]
+[ext_resource type="Texture2D" uid="uid://bps6sleyuegis" path="res://images/player/weapon_idle_2.png" id="5_m5mau"]
 [ext_resource type="AudioStream" uid="uid://bxqlb00owt0yo" path="res://sounds/footsteps/footstep_1.wav" id="6_eqrjj"]
+[ext_resource type="Texture2D" uid="uid://bcwuq2wq0w2tg" path="res://images/player/weapon_run_1.png" id="6_v5wh0"]
 [ext_resource type="AudioStream" uid="uid://bpqvm4mylltqy" path="res://sounds/footsteps/footstep_2.wav" id="7_kl3de"]
+[ext_resource type="Texture2D" uid="uid://5xnn3s6nc6oe" path="res://images/player/weapon_run_2.png" id="7_uonmf"]
+[ext_resource type="Texture2D" uid="uid://ch5axhisdpt4q" path="res://images/particles/footsteps.png" id="8_1mk4q"]
+[ext_resource type="Texture2D" uid="uid://ddjd0226qvii4" path="res://images/weapons/slipper.png" id="10_u4dt6"]
+
+[sub_resource type="Curve" id="Curve_behe2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_irwyp"]
+curve = SubResource("Curve_behe2")
+
+[sub_resource type="Gradient" id="Gradient_epd02"]
+interpolation_mode = 2
+colors = PackedColorArray(0.43134, 0.43134, 0.43134, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k5rp0"]
+gradient = SubResource("Gradient_epd02")
+
+[sub_resource type="Curve" id="Curve_xfiav"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.626667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_piq4r"]
+curve = SubResource("Curve_xfiav")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhvml"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+radial_velocity_min = -40.0
+radial_velocity_max = 40.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_piq4r")
+color_ramp = SubResource("GradientTexture1D_k5rp0")
+anim_speed_curve = SubResource("CurveTexture_irwyp")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ls5t0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_o3btu")
+"texture": ExtResource("4_vrc5h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_g0uq2")
+"texture": ExtResource("5_m5mau")
 }],
 "loop": true,
 "name": &"idle",
@@ -23,13 +62,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_a47lj")
+"texture": ExtResource("6_v5wh0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_we3af")
+"texture": ExtResource("7_uonmf")
 }],
 "loop": true,
 "name": &"run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"weapon_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"weapon_run",
 "speed": 5.0
 }]
 
@@ -76,26 +125,59 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:animation")
+tracks/3/path = NodePath("../FootstepSFX:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"run"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../FootstepSFX:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GPUParticles2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../GPUParticles2D2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.9, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"check_queue"
+}, {
+"args": [],
+"method": &"check_queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ao0px"]
@@ -139,22 +221,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:animation")
+tracks/3/path = NodePath("../FootstepSFX:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../FootstepSFX:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -192,14 +262,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:animation")
+tracks/2/path = NodePath(".:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_coimn"]
@@ -223,12 +305,42 @@ stream_1/stream = ExtResource("7_kl3de")
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nmkp4")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.246)
+position = Vector2(3, 2)
+texture = ExtResource("3_ojwb4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_uhvml")
+texture = ExtResource("8_1mk4q")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_uhvml")
+texture = ExtResource("8_1mk4q")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -29)
 rotation = -0.0872665
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_ls5t0")
 animation = &"idle"
+
+[node name="Weapon" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(-60.6723, -24.9524)
+rotation = 2.93215
+scale = Vector2(1, -1)
+texture = ExtResource("10_u4dt6")
+offset = Vector2(0.97168, 10.5897)
 
 [node name="RunAnim" type="AnimationPlayer" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
@@ -244,3 +356,5 @@ shape = SubResource("CapsuleShape2D_j8fth")
 [node name="FootstepSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_dk0tv")
 volume_db = 5.0
+
+[connection signal="current_animation_changed" from="AnimatedSprite2D/RunAnim" to="." method="_on_run_anim_current_animation_changed"]

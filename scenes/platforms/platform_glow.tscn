@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://4p55nhqd6knx"]
+
+[ext_resource type="Texture2D" uid="uid://dvek0vc78iq0e" path="res://icon.png" id="1_pgmks"]
+[ext_resource type="Script" path="res://scenes/platforms/platform_glow.gd" id="1_ujv6w"]
+[ext_resource type="Texture2D" uid="uid://lnpiql054jlb" path="res://images/particles/magic.png" id="2_07pt6"]
+[ext_resource type="Script" path="res://scenes/platforms/size_setter_tool.gd" id="4_mr3ti"]
+
+[sub_resource type="Curve" id="Curve_o4uou"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.706667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7rvpa"]
+curve = SubResource("Curve_o4uou")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6vceu"]
+resource_local_to_scene = true
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(128, 128, 0)
+angle_min = -20.0
+angle_max = 20.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+radial_velocity_min = -20.0
+radial_velocity_max = 20.0
+gravity = Vector3(0, -80, 0)
+scale_min = 0.5
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_7rvpa")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsf8d"]
+resource_local_to_scene = true
+size = Vector2(128, 128)
+
+[node name="GlowingPlatform" type="Area2D"]
+script = ExtResource("1_ujv6w")
+size = Vector2(256, 256)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+custom_minimum_size = Vector2(256, 256)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pgmks")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(0.643216, 1)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_6vceu")
+texture = ExtResource("2_07pt6")
+lifetime = 2.0
+randomness = 0.9
+visibility_rect = Rect2(-100, -100, 192, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hsf8d")
+
+[node name="SizeSetterTool" type="Node" parent="."]
+script = ExtResource("4_mr3ti")
+particles = true

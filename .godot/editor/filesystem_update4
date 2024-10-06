@@ -1,2 +1,8 @@
-res://scenes/game.tscn
+res://scenes/platforms/platform_glow.tscn
 res://shaders/scroll.gdshader
+res://scenes/platforms/size_setter_tool.gd
+res://scenes/game.tscn
+res://scenes/player/player.tscn
+res://shaders/outline.gdshader
+res://scenes/player/player.gd
+res://scenes/platforms/platform_normal.tscn

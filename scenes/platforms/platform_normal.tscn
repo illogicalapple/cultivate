@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsnyjj1dntrib"]
+
+[ext_resource type="Script" path="res://scenes/platforms/platform_glow.gd" id="1_rr7cr"]
+[ext_resource type="Texture2D" uid="uid://1rq4p20nmt3n" path="res://images/platforms/platform_generic.png" id="2_oxavq"]
+[ext_resource type="Script" path="res://scenes/platforms/size_setter_tool.gd" id="3_gdlqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsf8d"]
+resource_local_to_scene = true
+size = Vector2(128, 128)
+
+[node name="NormalPlatform" type="Area2D"]
+script = ExtResource("1_rr7cr")
+size = Vector2(128, 128)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oxavq")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_hsf8d")
+
+[node name="SizeSetterTool" type="Node" parent="."]
+script = ExtResource("3_gdlqr")
+particles = null
