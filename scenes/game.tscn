@@ -1,14 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=11 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="Shader" path="res://shaders/scroll.gdshader" id="1_3loud"]
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
+[ext_resource type="Texture2D" uid="uid://dvek0vc78iq0e" path="res://icon.png" id="3_qmlu5"]
+[ext_resource type="Texture2D" uid="uid://lnpiql054jlb" path="res://images/particles/magic.png" id="4_kb4xp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy38s"]
 shader = ExtResource("1_3loud")
 shader_parameter/motion = Vector2(15, 15)
 shader_parameter/scale = 1.0
 shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_o4uou"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.706667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7rvpa"]
+curve = SubResource("Curve_o4uou")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6vceu"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 50, 90)
+angle_min = -40.0
+angle_max = 40.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+radial_velocity_min = -20.0
+radial_velocity_max = 20.0
+gravity = Vector3(0, -80, 0)
+scale_min = 0.5
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_7rvpa")
+
+[sub_resource type="Environment" id="Environment_tej1b"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 1.0
+glow_hdr_threshold = 1.5
 
 [node name="Game" type="Node"]
 
@@ -21,8 +52,58 @@ centered = false
 region_enabled = true
 region_rect = Rect2(-254, -44, 1152, 648)
 
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Ground"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Ground/Area2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 173.0
+offset_top = 156.0
+offset_right = 301.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qmlu5")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Ground/Area2D/NinePatchRect"]
+position = Vector2(0.643219, -1)
+scale = Vector2(0.643216, 1)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_6vceu")
+texture = ExtResource("4_kb4xp")
+lifetime = 2.0
+randomness = 0.9
+
+[node name="Area2D2" type="Area2D" parent="Ground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Area2D2"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(871.25, 489.5)
+scale = Vector2(1.16797, 1.74219)
+texture = ExtResource("3_qmlu5")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="Area2D3" type="Area2D" parent="Ground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Area2D3"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+position = Vector2(641.25, 327)
+scale = Vector2(5.02734, 1.76562)
+texture = ExtResource("3_qmlu5")
+region_rect = Rect2(0, 0, 128, 128)
+
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" instance=ExtResource("1_rbhu5")]
 position = Vector2(236, 230)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tej1b")
