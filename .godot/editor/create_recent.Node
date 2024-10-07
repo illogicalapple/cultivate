@@ -1,3 +1,5 @@
+NinePatchRect
+TextureRect
 Node2D
 Label
 Sprite2D
@@ -6,9 +8,7 @@ GPUParticles2D
 CanvasGroup
 Node
 CollisionShape2D
-NinePatchRect
 WorldEnvironment
 PointLight2D
 Area2D
-TextureRect
 ParallaxLayer

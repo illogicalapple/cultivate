@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsnyjj1dntrib"]
+[gd_scene load_steps=6 format=3 uid="uid://bsnyjj1dntrib"]
 
 [ext_resource type="Script" path="res://scenes/platforms/platform_glow.gd" id="1_rr7cr"]
-[ext_resource type="Texture2D" uid="uid://1rq4p20nmt3n" path="res://images/platforms/platform_generic.png" id="2_oxavq"]
+[ext_resource type="Texture2D" uid="uid://cfbklgxspp7af" path="res://images/platforms/platform_generic_inner.png" id="2_eaun2"]
 [ext_resource type="Script" path="res://scenes/platforms/size_setter_tool.gd" id="3_gdlqr"]
+[ext_resource type="Texture2D" uid="uid://biikgao30y4gg" path="res://images/platforms/platform_generic_outline.png" id="3_yegqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsf8d"]
 resource_local_to_scene = true
@@ -26,11 +27,50 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_oxavq")
+texture = ExtResource("2_eaun2")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+
+[node name="Shadow" type="NinePatchRect" parent="NinePatchRect"]
+modulate = Color(1, 1, 1, 0.377)
+show_behind_parent = true
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yegqd")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Border" type="NinePatchRect" parent="NinePatchRect"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yegqd")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

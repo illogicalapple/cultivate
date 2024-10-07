@@ -21,6 +21,7 @@ glow_hdr_threshold = 1.5
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.47788, 0.47788, 0.47788, 1)
+z_index = -10
 texture_repeat = 2
 material = SubResource("ShaderMaterial_xy38s")
 texture = ExtResource("2_mpcv1")
@@ -33,6 +34,10 @@ region_rect = Rect2(-254, -44, 1152, 648)
 [node name="NormalPlatform" parent="Ground" instance=ExtResource("3_714ad")]
 position = Vector2(624, 224)
 size = Vector2(1024, 128)
+
+[node name="NormalPlatform2" parent="Ground" instance=ExtResource("3_714ad")]
+position = Vector2(1080, 319)
+size = Vector2(128, 540)
 
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
