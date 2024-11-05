@@ -31,9 +31,10 @@ scale_curve = SubResource("CurveTexture_7rvpa")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsf8d"]
 resource_local_to_scene = true
-size = Vector2(128, 128)
+size = Vector2(256, 256)
 
 [node name="GlowingPlatform" type="Area2D"]
+collision_mask = 0
 script = ExtResource("1_ujv6w")
 size = Vector2(256, 256)
 

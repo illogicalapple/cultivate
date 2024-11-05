@@ -10,11 +10,14 @@ resource_local_to_scene = true
 size = Vector2(128, 128)
 
 [node name="NormalPlatform" type="Area2D"]
+light_mask = 2
+visibility_layer = 2
+collision_mask = 0
 script = ExtResource("1_rr7cr")
 size = Vector2(128, 128)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-modulate = Color(1.5, 1.5, 1.5, 1)
+modulate = Color(3, 3, 3, 1)
 custom_minimum_size = Vector2(128, 128)
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,6 +59,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Border" type="NinePatchRect" parent="NinePatchRect"]
+self_modulate = Color(5, 5, 5, 1)
 show_behind_parent = true
 z_index = -1
 layout_mode = 1
@@ -78,4 +82,3 @@ shape = SubResource("RectangleShape2D_hsf8d")
 
 [node name="SizeSetterTool" type="Node" parent="."]
 script = ExtResource("3_gdlqr")
-particles = null

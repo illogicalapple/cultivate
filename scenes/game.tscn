@@ -1,15 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://div6qt6nqcny5"]
 
-[ext_resource type="Shader" path="res://shaders/scroll.gdshader" id="1_3loud"]
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
 [ext_resource type="PackedScene" uid="uid://bsnyjj1dntrib" path="res://scenes/platforms/platform_normal.tscn" id="3_714ad"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy38s"]
-shader = ExtResource("1_3loud")
-shader_parameter/motion = Vector2(15, 15)
-shader_parameter/scale = 1.0
-shader_parameter/offset = Vector2(0, 0)
+[ext_resource type="PackedScene" uid="uid://buvlxtq0svcsd" path="res://scenes/enemies/cultivator/cult_member.tscn" id="4_04qk5"]
+[ext_resource type="PackedScene" uid="uid://c6aamvcmupg7h" path="res://scenes/ui/cards.tscn" id="5_ouykd"]
 
 [sub_resource type="Environment" id="Environment_tej1b"]
 background_mode = 3
@@ -19,11 +14,17 @@ glow_hdr_threshold = 1.5
 
 [node name="Game" type="Node"]
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.400698, 0.400698, 0.400698, 1)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color(0.47788, 0.47788, 0.47788, 1)
 z_index = -10
 texture_repeat = 2
-material = SubResource("ShaderMaterial_xy38s")
 texture = ExtResource("2_mpcv1")
 centered = false
 region_enabled = true
@@ -39,11 +40,49 @@ size = Vector2(1024, 128)
 position = Vector2(1080, 319)
 size = Vector2(128, 540)
 
+[node name="NormalPlatform3" parent="Ground" instance=ExtResource("3_714ad")]
+position = Vector2(1352, 158)
+size = Vector2(500, 200)
+
+[node name="NormalPlatform4" parent="Ground" instance=ExtResource("3_714ad")]
+position = Vector2(1775, 459)
+size = Vector2(500, 800)
+
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" instance=ExtResource("1_rbhu5")]
 position = Vector2(236, 230)
 
+[node name="Camera2D" type="Camera2D" parent="Objects/Player"]
+
+[node name="CultMember" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(1093, 247)
+start_facing = -1
+
+[node name="CultMember4" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(1970, 343)
+start_facing = -1
+
+[node name="CultMember6" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(1961, 671)
+start_facing = -1
+
+[node name="CultMember2" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(435, 224)
+
+[node name="CultMember3" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(1083, 144)
+
+[node name="CultMember5" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(1591, 547)
+
+[node name="CultMember7" parent="Objects" instance=ExtResource("4_04qk5")]
+position = Vector2(1599, 806)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tej1b")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Cards" parent="UI" instance=ExtResource("5_ouykd")]
