@@ -1,3 +1,7 @@
+AnimationPlayer
+ShapeCast2D
+Area2D
+CharacterBody2D
 TextureProgressBar
 AudioStreamPlayer
 TextureRect
@@ -5,11 +9,6 @@ Sprite2D
 Node2D
 Control
 CollisionShape2D
-Area2D
-AnimationPlayer
 AudioStreamPlayer2D
 HBoxContainer
 CanvasLayer
-StaticBody2D
-RayCast2D
-CollisionPolygon2D
