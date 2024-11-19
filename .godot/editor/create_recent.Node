@@ -1,8 +1,8 @@
 AnimationPlayer
+TextureProgressBar
 ShapeCast2D
 Area2D
 CharacterBody2D
-TextureProgressBar
 AudioStreamPlayer
 TextureRect
 Sprite2D
