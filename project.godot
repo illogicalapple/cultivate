@@ -17,7 +17,7 @@ warnings/check_invalid_track_paths=false
 config/name="cultivate"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.4")
-config/icon="res://icon.png"
+config/icon="icon.png"
 
 [global_group]
 

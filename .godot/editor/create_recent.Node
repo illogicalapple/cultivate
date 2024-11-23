@@ -1,3 +1,6 @@
+GPUParticles2D
+AudioStreamPlayer2D
+Sprite2D
 AnimationPlayer
 TextureProgressBar
 ShapeCast2D
@@ -5,10 +8,7 @@ Area2D
 CharacterBody2D
 AudioStreamPlayer
 TextureRect
-Sprite2D
 Node2D
 Control
 CollisionShape2D
-AudioStreamPlayer2D
 HBoxContainer
-CanvasLayer
