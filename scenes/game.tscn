@@ -1,16 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=14 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
 [ext_resource type="PackedScene" uid="uid://bsnyjj1dntrib" path="res://scenes/platforms/platform_normal.tscn" id="3_714ad"]
 [ext_resource type="PackedScene" uid="uid://buvlxtq0svcsd" path="res://scenes/enemies/cultivator/cult_member.tscn" id="4_04qk5"]
+[ext_resource type="PackedScene" uid="uid://safp180fn361" path="res://scenes/objects/door.tscn" id="5_nsl0c"]
 [ext_resource type="PackedScene" uid="uid://c6aamvcmupg7h" path="res://scenes/ui/cards.tscn" id="5_ouykd"]
+[ext_resource type="Texture2D" uid="uid://bv28g70lyq4ce" path="res://images/ui/rice.png" id="6_u46st"]
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="7_wblgh"]
+[ext_resource type="Script" path="res://scenes/ui/rice_bowl.gd" id="8_ig4ua"]
 
 [sub_resource type="Environment" id="Environment_tej1b"]
 background_mode = 3
 glow_enabled = true
 glow_bloom = 1.0
 glow_hdr_threshold = 1.5
+
+[sub_resource type="Animation" id="Animation_exo2q"]
+resource_name = "pop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0502078, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(64, 64), Vector2(84, 84), Vector2(64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_tsisk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7oqm"]
+_data = {
+&"RESET": SubResource("Animation_tsisk"),
+&"pop": SubResource("Animation_exo2q")
+}
 
 [node name="Game" type="Node"]
 
@@ -19,7 +60,7 @@ glow_hdr_threshold = 1.5
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.400698, 0.400698, 0.400698, 1)
 motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(1152, 648)
+motion_mirroring = Vector2(1920, 1080)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color(0.47788, 0.47788, 0.47788, 1)
@@ -28,7 +69,7 @@ texture_repeat = 2
 texture = ExtResource("2_mpcv1")
 centered = false
 region_enabled = true
-region_rect = Rect2(-254, -44, 1152, 648)
+region_rect = Rect2(-254, -44, 1920, 1080)
 
 [node name="Ground" type="Node2D" parent="."]
 
@@ -48,6 +89,10 @@ size = Vector2(500, 200)
 position = Vector2(1775, 459)
 size = Vector2(500, 800)
 
+[node name="NormalPlatform5" parent="Ground" instance=ExtResource("3_714ad")]
+position = Vector2(2143, 808)
+size = Vector2(500, 100)
+
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -55,6 +100,8 @@ y_sort_enabled = true
 position = Vector2(236, 230)
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player"]
+ignore_rotation = false
+position_smoothing_enabled = true
 
 [node name="CultMember" parent="Objects" instance=ExtResource("4_04qk5")]
 position = Vector2(1093, 247)
@@ -80,9 +127,41 @@ position = Vector2(1591, 547)
 [node name="CultMember7" parent="Objects" instance=ExtResource("4_04qk5")]
 position = Vector2(1599, 806)
 
+[node name="Door" parent="Objects" instance=ExtResource("5_nsl0c")]
+position = Vector2(2315, 776)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tej1b")
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="Cards" parent="UI" instance=ExtResource("5_ouykd")]
+
+[node name="RiceStat" type="HBoxContainer" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -104.0
+offset_right = 154.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme = ExtResource("7_wblgh")
+theme_override_constants/separation = 16
+
+[node name="RiceBowl" type="TextureRect" parent="UI/RiceStat" groups=["rice_ui"]]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_u46st")
+expand_mode = 1
+script = ExtResource("8_ig4ua")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/RiceStat/RiceBowl"]
+libraries = {
+&"": SubResource("AnimationLibrary_g7oqm")
+}
+
+[node name="Count" type="Label" parent="UI/RiceStat"]
+layout_mode = 2
+text = "0"

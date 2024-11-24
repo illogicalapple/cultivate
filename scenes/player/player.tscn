@@ -443,8 +443,9 @@ streams_count = 2
 stream_0/stream = ExtResource("6_eqrjj")
 stream_1/stream = ExtResource("7_kl3de")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rd23q"]
-radius = 16.0312
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54ryi"]
+radius = 6.0
+height = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msway"]
 radius = 19.0
@@ -453,8 +454,8 @@ height = 70.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.7, 0.7, 0.7, 1)
 light_mask = 0
-collision_layer = 4
-collision_mask = 0
+collision_layer = 36
+collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_nmkp4")
 
@@ -521,9 +522,10 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_rd23q")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_54ryi")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
