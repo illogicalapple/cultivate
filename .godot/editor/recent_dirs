@@ -1,12 +1,12 @@
-res://
+res://scenes/attacks
 res://orphans
+res://images/enemies/cultivator
+res://
 res://scenes/objects
 res://shaders
 res://scenes/ui
 res://scenes/vfx
-res://scenes/attacks
 /home/apple/Documents/GitHub/cultivate/behavior/
-res://images/enemies/cultivator
 res://scenes/enemies/cultivator
 res://images/player
 res://scenes/platforms

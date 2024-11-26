@@ -16,6 +16,21 @@ glow_enabled = true
 glow_bloom = 1.0
 glow_hdr_threshold = 1.5
 
+[sub_resource type="Animation" id="Animation_tsisk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 64)]
+}
+
 [sub_resource type="Animation" id="Animation_exo2q"]
 resource_name = "pop"
 length = 0.3
@@ -30,21 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(64, 64), Vector2(84, 84), Vector2(64, 64)]
-}
-
-[sub_resource type="Animation" id="Animation_tsisk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:custom_minimum_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(64, 64)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7oqm"]
@@ -104,7 +104,7 @@ ignore_rotation = false
 position_smoothing_enabled = true
 
 [node name="CultMember" parent="Objects" instance=ExtResource("4_04qk5")]
-position = Vector2(1093, 247)
+position = Vector2(1093, 263)
 start_facing = -1
 
 [node name="CultMember4" parent="Objects" instance=ExtResource("4_04qk5")]
