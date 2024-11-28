@@ -436,8 +436,8 @@ tracks/3/keys = {
 _data = {
 &"alert": SubResource("Animation_y4h66"),
 &"RESET": SubResource("Animation_ao0px"),
-&"run": SubResource("Animation_xq7ms"),
-&"idle": SubResource("Animation_s5avq")
+&"idle": SubResource("Animation_s5avq"),
+&"run": SubResource("Animation_xq7ms")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dk0tv"]
