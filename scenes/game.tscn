@@ -1,14 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=17 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
 [ext_resource type="PackedScene" uid="uid://bsnyjj1dntrib" path="res://scenes/platforms/platform_normal.tscn" id="3_714ad"]
 [ext_resource type="PackedScene" uid="uid://buvlxtq0svcsd" path="res://scenes/enemies/cultivator/cult_member.tscn" id="4_04qk5"]
 [ext_resource type="PackedScene" uid="uid://safp180fn361" path="res://scenes/objects/door.tscn" id="5_nsl0c"]
-[ext_resource type="PackedScene" uid="uid://c6aamvcmupg7h" path="res://scenes/ui/cards.tscn" id="5_ouykd"]
+[ext_resource type="PackedScene" uid="uid://c6aamvcmupg7h" path="res://scenes/ui/hud/cards.tscn" id="5_ouykd"]
+[ext_resource type="PackedScene" uid="uid://cnb5otusbx3mm" path="res://scenes/objects/card_drop.tscn" id="6_03v8o"]
 [ext_resource type="Texture2D" uid="uid://bv28g70lyq4ce" path="res://images/ui/rice.png" id="6_u46st"]
 [ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="7_wblgh"]
-[ext_resource type="Script" path="res://scenes/ui/rice_bowl.gd" id="8_ig4ua"]
+[ext_resource type="Script" uid="uid://1l54owa10yup" path="res://scenes/ui/hud/rice_bowl.gd" id="8_ig4ua"]
+[ext_resource type="PackedScene" uid="uid://ejsp30dq0c57" path="res://scenes/ui/inventory/inventory.tscn" id="11_t5c00"]
+[ext_resource type="AudioStream" uid="uid://bam0ek02nk4jk" path="res://sounds/music/temp_music.mp3" id="12_4w0bt"]
 
 [sub_resource type="Environment" id="Environment_tej1b"]
 background_mode = 3
@@ -130,6 +133,9 @@ position = Vector2(1599, 806)
 [node name="Door" parent="Objects" instance=ExtResource("5_nsl0c")]
 position = Vector2(2315, 776)
 
+[node name="CardDrop" parent="Objects" instance=ExtResource("6_03v8o")]
+position = Vector2(553, 247)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tej1b")
 
@@ -165,3 +171,12 @@ libraries = {
 [node name="Count" type="Label" parent="UI/RiceStat"]
 layout_mode = 2
 text = "0"
+
+[node name="Inventory" parent="UI" instance=ExtResource("11_t5c00")]
+visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_4w0bt")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
