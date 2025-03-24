@@ -1,0 +1,247 @@
+[gd_scene load_steps=14 format=3 uid="uid://cnb5otusbx3mm"]
+
+[ext_resource type="Texture2D" uid="uid://drv84wxu5yyvy" path="res://images/shadow.png" id="1_u7yju"]
+[ext_resource type="Script" uid="uid://dparmiqgkqdjy" path="res://scenes/objects/card_drop.gd" id="1_uhcjg"]
+[ext_resource type="Script" uid="uid://cave16pvqu5hm" path="res://orphans/interaction_area_2d.gd" id="2_0nuuk"]
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="2_0806k"]
+[ext_resource type="Texture2D" uid="uid://6wpwtl0v5ssp" path="res://images/ui/card.png" id="2_n8xhg"]
+[ext_resource type="Texture2D" uid="uid://dqygq6oi7xjiq" path="res://images/card_icons/punch.png" id="3_ga3de"]
+
+[sub_resource type="Animation" id="Animation_xoqyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-139.5, -120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vkkkb"]
+resource_name = "show_dialogue"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3),
+"transitions": PackedFloat32Array(2.92817, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.92817),
+"update": 0,
+"values": [Vector2(-139.5, -90), Vector2(-139.5, -90.0045), Vector2(-139.5, -90.0358), Vector2(-139.5, -90.1207), Vector2(-139.5, -90.2861), Vector2(-139.5, -90.5589), Vector2(-139.5, -90.9657), Vector2(-139.5, -91.5335), Vector2(-139.5, -92.2891), Vector2(-139.5, -93.2593), Vector2(-139.5, -94.4709), Vector2(-139.5, -95.9507), Vector2(-139.5, -97.7257), Vector2(-139.5, -99.8225), Vector2(-139.5, -102.178), Vector2(-139.5, -104.274), Vector2(-139.5, -106.049), Vector2(-139.5, -107.529), Vector2(-139.5, -108.741), Vector2(-139.5, -109.711), Vector2(-139.5, -110.466), Vector2(-139.5, -111.034), Vector2(-139.5, -111.441), Vector2(-139.5, -111.714), Vector2(-139.5, -111.879), Vector2(-139.5, -111.964), Vector2(-139.5, -111.996), Vector2(-139.5, -112)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1kfly"]
+_data = {
+&"RESET": SubResource("Animation_xoqyx"),
+&"show_dialogue": SubResource("Animation_vkkkb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aic3a"]
+radius = 21.3776
+
+[sub_resource type="Animation" id="Animation_qho1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card/CardIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_35833"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+"update": 0,
+"values": [-0.174533, -0.173577, -0.170719, -0.165991, -0.159444, -0.15115, -0.1412, -0.129703, -0.116785, -0.102588, -0.0872665, -0.0709889, -0.0539336, -0.0362874, -0.0182437, 0.0, 0.0182437, 0.0362874, 0.0539337, 0.0709889, 0.0872665, 0.102588, 0.116785, 0.129703, 0.1412, 0.15115, 0.159444, 0.165991, 0.170719, 0.173577, 0.174533, 0.173577, 0.170719, 0.165991, 0.159444, 0.15115, 0.1412, 0.129703, 0.116785, 0.102588, 0.0872665, 0.0709889, 0.0539336, 0.0362874, 0.0182437, 0.0, -0.0182437, -0.0362874, -0.0539337, -0.0709889, -0.0872665, -0.102588, -0.116785, -0.129703, -0.1412, -0.15115, -0.159444, -0.165991, -0.170719, -0.173577, -0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, -30.1639), Vector2(0, -30.6484), Vector2(0, -31.4324), Vector2(0, -32.4815), Vector2(0, -33.75), Vector2(0, -35.1824), Vector2(0, -36.716), Vector2(0, -38.284), Vector2(0, -39.8176), Vector2(0, -41.25), Vector2(0, -42.5185), Vector2(0, -43.5676), Vector2(0, -44.3516), Vector2(0, -44.8361), Vector2(0, -45), Vector2(0, -44.8361), Vector2(0, -44.3516), Vector2(0, -43.5676), Vector2(0, -42.5185), Vector2(0, -41.25), Vector2(0, -39.8176), Vector2(0, -38.284), Vector2(0, -36.716), Vector2(0, -35.1824), Vector2(0, -33.75), Vector2(0, -32.4815), Vector2(0, -31.4324), Vector2(0, -30.6484), Vector2(0, -30.1639), Vector2(0, -30), Vector2(0, -30.1639), Vector2(0, -30.6484), Vector2(0, -31.4324), Vector2(0, -32.4815), Vector2(0, -33.75), Vector2(0, -35.1824), Vector2(0, -36.716), Vector2(0, -38.284), Vector2(0, -39.8176), Vector2(0, -41.25), Vector2(0, -42.5185), Vector2(0, -43.5676), Vector2(0, -44.3516), Vector2(0, -44.8361), Vector2(0, -45), Vector2(0, -44.8361), Vector2(0, -44.3516), Vector2(0, -43.5676), Vector2(0, -42.5185), Vector2(0, -41.25), Vector2(0, -39.8176), Vector2(0, -38.284), Vector2(0, -36.716), Vector2(0, -35.1824), Vector2(0, -33.75), Vector2(0, -32.4815), Vector2(0, -31.4324), Vector2(0, -30.6484), Vector2(0, -30.1639), Vector2(0, -30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(-0.2, 0.2), Vector2(0.2, 0.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card/CardIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8feb"]
+_data = {
+&"RESET": SubResource("Animation_qho1j"),
+&"float": SubResource("Animation_35833")
+}
+
+[node name="CardDrop" type="Node2D"]
+script = ExtResource("1_uhcjg")
+
+[node name="Dialog" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -120.0
+offset_right = 139.5
+offset_bottom = -52.0002
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0806k")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]free card?
+[space][/center]"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog"]
+libraries = {
+&"": SubResource("AnimationLibrary_1kfly")
+}
+
+[node name="InteractionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("2_0nuuk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_aic3a")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.258824)
+texture = ExtResource("1_u7yju")
+
+[node name="Card" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+rotation = -0.174533
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_n8xhg")
+
+[node name="CardIcon" type="Sprite2D" parent="Card"]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("3_ga3de")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o8feb")
+}
+autoplay = "float"
+
+[connection signal="interacted" from="InteractionArea2D" to="." method="_on_interacted"]
+[connection signal="range_entered" from="InteractionArea2D" to="Dialog/AnimationPlayer" method="play" binds= ["show_dialogue"]]
+[connection signal="range_exited" from="InteractionArea2D" to="Dialog/AnimationPlayer" method="play_backwards" binds= ["show_dialogue"]]

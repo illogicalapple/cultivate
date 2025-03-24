@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://s1hkyspf02c1"]
+
+[ext_resource type="Script" uid="uid://beb3qk7sqwk6g" path="res://scenes/attacks/enemy_onigiri.gd" id="1_8a61g"]
+[ext_resource type="Texture2D" uid="uid://dsljysiqvup54" path="res://images/attacks/onigiri.png" id="2_u6737"]
+[ext_resource type="AudioStream" uid="uid://2g6x2y07p7dr" path="res://sounds/cards/swing.wav" id="3_b2cpo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsvrm"]
+radius = 8.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gh1rn"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("3_b2cpo")
+
+[node name="EnemyOnigiri" type="Area2D"]
+position = Vector2(0, 2)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8a61g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
+position = Vector2(0, -2)
+rotation = 2.44346
+texture = ExtResource("2_u6737")
+offset = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_rsvrm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_gh1rn")
+volume_db = -4.0
+autoplay = true

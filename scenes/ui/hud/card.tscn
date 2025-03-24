@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://csumvciuxk0t7"]
+
+[ext_resource type="Texture2D" uid="uid://6wpwtl0v5ssp" path="res://images/ui/card.png" id="1_bi12o"]
+[ext_resource type="Texture2D" uid="uid://dyw12r7ikywx3" path="res://images/card_icons/icon.png" id="2_erj4f"]
+[ext_resource type="Script" path="res://scenes/ui/hud/card.gd" id="2_uk23b"]
+[ext_resource type="Texture2D" uid="uid://ct008bhg6tnw3" path="res://images/ui/card_cooldown.png" id="4_q7c4d"]
+
+[node name="CardLeft" type="TextureRect"]
+offset_right = 178.0
+offset_bottom = 250.0
+pivot_offset = Vector2(89, 125)
+mouse_filter = 0
+texture = ExtResource("1_bi12o")
+script = ExtResource("2_uk23b")
+
+[node name="CardIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_erj4f")
+expand_mode = 1
+
+[node name="Cooldown" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 3
+texture_progress = ExtResource("4_q7c4d")
+
+[connection signal="value_changed" from="Cooldown" to="." method="_on_cooldown_value_changed"]

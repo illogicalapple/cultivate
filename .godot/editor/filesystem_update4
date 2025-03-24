@@ -1,0 +1,16 @@
+res://default_bus_layout.tres
+res://scenes/ui/hud/cards.tscn
+res://shaders/blur.gdshader
+res://shaders/scroll.gdshader
+res://shaders/outline.gdshader
+res://shaders/non_visible.gdshader
+res://scenes/game.tscn
+res://scenes/ui/inventory/inventory.tscn
+res://scenes/ui/inventory/replace_card.tscn
+res://scenes/ui/inventory/inventory_card.tscn
+res://scenes/ui/inventory/replace_card_card.tscn
+res://scenes/objects/card_drop.tscn
+res://scenes/attacks/bus.tscn
+res://scenes/attacks/bus_target.tscn
+res://scenes/ui/hud/card_mini.gd
+res://behavior/cards.cfg

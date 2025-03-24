@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=18 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://1l54owa10yup" path="res://scenes/ui/hud/rice_bowl.gd" id="8_ig4ua"]
 [ext_resource type="PackedScene" uid="uid://ejsp30dq0c57" path="res://scenes/ui/inventory/inventory.tscn" id="11_t5c00"]
 [ext_resource type="AudioStream" uid="uid://bam0ek02nk4jk" path="res://sounds/music/temp_music.mp3" id="12_4w0bt"]
+[ext_resource type="PackedScene" uid="uid://dt0trvx0b8r44" path="res://scenes/ui/inventory/replace_card.tscn" id="12_kvuet"]
 
 [sub_resource type="Environment" id="Environment_tej1b"]
 background_mode = 3
@@ -66,7 +67,7 @@ motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(1920, 1080)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color(0.47788, 0.47788, 0.47788, 1)
+modulate = Color(0.233926, 0.233925, 0.233925, 1)
 z_index = -10
 texture_repeat = 2
 texture = ExtResource("2_mpcv1")
@@ -172,8 +173,11 @@ libraries = {
 layout_mode = 2
 text = "0"
 
+[node name="ReplaceCard" parent="UI" instance=ExtResource("12_kvuet")]
+
 [node name="Inventory" parent="UI" instance=ExtResource("11_t5c00")]
 visible = false
+z_index = 2
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_4w0bt")

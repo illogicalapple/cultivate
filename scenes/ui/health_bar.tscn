@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://blgmfgum1gf63"]
+
+[ext_resource type="Texture2D" uid="uid://ba0x5vvbu6qv4" path="res://images/ui/health_below.png" id="1_txv3k"]
+[ext_resource type="Texture2D" uid="uid://dpdji1pteg6sb" path="res://images/ui/health_above.png" id="2_6jj7q"]
+[ext_resource type="Script" uid="uid://cdskr8tmf4ey1" path="res://scenes/ui/health_bar.gd" id="3_te14w"]
+
+[sub_resource type="Animation" id="Animation_6u7h6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hb07f"]
+resource_name = "in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m7y4n"]
+_data = {
+&"RESET": SubResource("Animation_6u7h6"),
+&"in": SubResource("Animation_hb07f")
+}
+
+[node name="HealthBar" type="TextureProgressBar"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_right = 32.0
+offset_bottom = 32.0
+max_value = 50.0
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("1_txv3k")
+texture_progress = ExtResource("2_6jj7q")
+script = ExtResource("3_te14w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_m7y4n")
+}

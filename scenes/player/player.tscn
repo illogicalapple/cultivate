@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bx2jyrehfevui"]
+[gd_scene load_steps=43 format=3 uid="uid://bx2jyrehfevui"]
 
 [ext_resource type="Script" uid="uid://btpmrn75pj6qu" path="res://scenes/player/player.gd" id="1_nmkp4"]
 [ext_resource type="Texture2D" uid="uid://drv84wxu5yyvy" path="res://images/shadow.png" id="3_ojwb4"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://blgmfgum1gf63" path="res://scenes/ui/health_bar.tscn" id="16_e2n8c"]
 [ext_resource type="Texture2D" uid="uid://ltijg4c3s7e3" path="res://images/ui/health_below_friendly.png" id="17_u3imn"]
 [ext_resource type="Texture2D" uid="uid://dieu35wosrnlr" path="res://images/ui/health_above_friendly.png" id="18_cw01s"]
+[ext_resource type="Texture2D" uid="uid://bsbhnvushm1wa" path="res://images/particles/hit.png" id="19_lgqa7"]
 
 [sub_resource type="Curve" id="Curve_behe2"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -463,6 +464,31 @@ random_pitch = 1.4
 streams_count = 1
 stream_0/stream = ExtResource("15_ehvbm")
 
+[sub_resource type="Gradient" id="Gradient_8ydkj"]
+colors = PackedColorArray(0.800491, 0.800491, 0.800491, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vf1xh"]
+gradient = SubResource("Gradient_8ydkj")
+
+[sub_resource type="Curve" id="Curve_3j4b4"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 1.14286), 0.0, 1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ncwk0"]
+curve = SubResource("Curve_3j4b4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yj68g"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 400, 0)
+radial_accel_min = -40.0
+radial_accel_max = 40.0
+scale_curve = SubResource("CurveTexture_ncwk0")
+color_initial_ramp = SubResource("GradientTexture1D_vf1xh")
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.7, 0.7, 0.7, 1)
 light_mask = 0
@@ -566,5 +592,16 @@ offset_bottom = -43.0
 texture_under = ExtResource("17_u3imn")
 texture_progress = ExtResource("18_cw01s")
 
+[node name="HurtParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -24)
+emitting = false
+amount = 15
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+texture = ExtResource("19_lgqa7")
+process_material = SubResource("ParticleProcessMaterial_yj68g")
+
 [connection signal="damaged" from="." to="HurtSFX" method="play" unbinds=2]
+[connection signal="damaged" from="." to="HurtParticles" method="restart" unbinds=2]
 [connection signal="current_animation_changed" from="AnimatedSprite2D/RunAnim" to="." method="_on_run_anim_current_animation_changed"]

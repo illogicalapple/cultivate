@@ -1,0 +1,175 @@
+[gd_scene load_steps=16 format=3 uid="uid://safp180fn361"]
+
+[ext_resource type="Texture2D" uid="uid://difmn3okaokiy" path="res://images/objects/door.png" id="1_u02f4"]
+[ext_resource type="Script" uid="uid://cave16pvqu5hm" path="res://orphans/interaction_area_2d.gd" id="2_s1g6c"]
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="3_yocvu"]
+[ext_resource type="Texture2D" uid="uid://lnpiql054jlb" path="res://images/particles/magic.png" id="4_llhwa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spgf0"]
+atlas = ExtResource("1_u02f4")
+region = Rect2(10, 9, 113, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xolat"]
+size = Vector2(113, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnrje"]
+size = Vector2(113.5, 33)
+
+[sub_resource type="Animation" id="Animation_pelkk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-139.5, -120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q5xu6"]
+resource_name = "show_dialogue"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3),
+"transitions": PackedFloat32Array(2.92817, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.92817),
+"update": 0,
+"values": [Vector2(-139.5, -120), Vector2(-139.5, -120.007), Vector2(-139.5, -120.052), Vector2(-139.5, -120.176), Vector2(-139.5, -120.416), Vector2(-139.5, -120.813), Vector2(-139.5, -121.405), Vector2(-139.5, -122.231), Vector2(-139.5, -123.33), Vector2(-139.5, -124.741), Vector2(-139.5, -126.503), Vector2(-139.5, -128.656), Vector2(-139.5, -131.237), Vector2(-139.5, -134.287), Vector2(-139.5, -137.713), Vector2(-139.5, -140.763), Vector2(-139.5, -143.344), Vector2(-139.5, -145.497), Vector2(-139.5, -147.259), Vector2(-139.5, -148.67), Vector2(-139.5, -149.769), Vector2(-139.5, -150.595), Vector2(-139.5, -151.187), Vector2(-139.5, -151.584), Vector2(-139.5, -151.824), Vector2(-139.5, -151.948), Vector2(-139.5, -151.993), Vector2(-139.5, -152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53uh2"]
+_data = {
+&"RESET": SubResource("Animation_pelkk"),
+&"show_dialogue": SubResource("Animation_q5xu6")
+}
+
+[sub_resource type="Curve" id="Curve_qyj0x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.224638, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vhu5p"]
+curve = SubResource("Curve_qyj0x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fo403"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(52, 1, 1)
+angular_velocity_min = -240.0
+angular_velocity_max = 240.0
+gravity = Vector3(0, -64, 0)
+scale_curve = SubResource("CurveTexture_vhu5p")
+
+[sub_resource type="Gradient" id="Gradient_1tqce"]
+colors = PackedColorArray(0.509804, 0.905882, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpqu5"]
+gradient = SubResource("Gradient_1tqce")
+width = 104
+height = 20
+fill_from = Vector2(1, 1)
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -47)
+texture = SubResource("AtlasTexture_spgf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -6.5)
+shape = SubResource("RectangleShape2D_xolat")
+
+[node name="InteractionArea2D" type="Area2D" parent="."]
+position = Vector2(2, 26)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("2_s1g6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
+position = Vector2(-2.75, 0)
+shape = SubResource("RectangleShape2D_fnrje")
+
+[node name="Dialog" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -120.0
+offset_right = 139.5
+offset_bottom = -52.0002
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yocvu")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]oh look, a door!
+[space][/center]"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog"]
+libraries = {
+&"": SubResource("AnimationLibrary_53uh2")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 400
+offset_left = -2343.0
+offset_top = -1659.0
+offset_right = 1855.0
+offset_bottom = 1552.0
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 16
+texture = ExtResource("4_llhwa")
+process_material = SubResource("ParticleProcessMaterial_fo403")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-0.499998, -1)
+scale = Vector2(1.08654, 1)
+texture = SubResource("GradientTexture2D_lpqu5")
+
+[connection signal="interacted" from="InteractionArea2D" to="ColorRect" method="show"]
+[connection signal="range_entered" from="InteractionArea2D" to="Dialog/AnimationPlayer" method="play" binds= ["show_dialogue"]]
+[connection signal="range_exited" from="InteractionArea2D" to="Dialog/AnimationPlayer" method="play_backwards" binds= ["show_dialogue"]]

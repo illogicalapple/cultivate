@@ -1,0 +1,266 @@
+[gd_scene load_steps=10 format=3 uid="uid://7yar2damf666"]
+
+[ext_resource type="Texture2D" uid="uid://6wpwtl0v5ssp" path="res://images/ui/card.png" id="1_umxjb"]
+[ext_resource type="Script" uid="uid://hfynd3c23hxq" path="res://scenes/ui/inventory/replace_card_card.gd" id="2_mcm81"]
+[ext_resource type="Texture2D" uid="uid://dqygq6oi7xjiq" path="res://images/card_icons/punch.png" id="2_usij8"]
+[ext_resource type="Texture2D" uid="uid://b5yedpiqs0j6t" path="res://images/ui/empty_card_slot.png" id="4_22eh6"]
+[ext_resource type="Texture2D" uid="uid://cohv6jnhujqlt" path="res://images/ui/card_shadow.png" id="4_mcm81"]
+
+[sub_resource type="Animation" id="Animation_usij8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardVisible:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionCard:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardVisible:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardVisible:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TransitionCard:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CardVisible:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hak3o"]
+resource_name = "change_card"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionCard:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardVisible:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardVisible:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-30, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TransitionCard:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardVisible:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_umxjb"]
+resource_name = "hover"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardVisible:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.25),
+"transitions": PackedFloat32Array(1.56917, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.56917),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0.503389), Vector2(0, 1.73077), Vector2(0, 3.25799), Vector2(0, 4.66086), Vector2(0, 5.51522), Vector2(0, 5.3969), Vector2(0, 3.88173), Vector2(0, 0.545538), Vector2(0, -5.03585), Vector2(0, -13.2866), Vector2(0, -24.6309), Vector2(0, -37.4545), Vector2(0, -47.199), Vector2(0, -54.062), Vector2(0, -58.4678), Vector2(0, -60.8404), Vector2(0, -61.6042), Vector2(0, -61.1831), Vector2(0, -60.0015), Vector2(0, -58.4834), Vector2(0, -57.0531), Vector2(0, -56.1347), Vector2(0, -56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardVisible:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.25),
+"transitions": PackedFloat32Array(1.51572, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.51572),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.998202, 0.998202), Vector2(0.993819, 0.993819), Vector2(0.988364, 0.988364), Vector2(0.983354, 0.983354), Vector2(0.980303, 0.980303), Vector2(0.980725, 0.980725), Vector2(0.986137, 0.986137), Vector2(0.998052, 0.998052), Vector2(1.01799, 1.01799), Vector2(1.04745, 1.04745), Vector2(1.08797, 1.08797), Vector2(1.13377, 1.13377), Vector2(1.16857, 1.16857), Vector2(1.19308, 1.19308), Vector2(1.20881, 1.20881), Vector2(1.21729, 1.21729), Vector2(1.22001, 1.22001), Vector2(1.21851, 1.21851), Vector2(1.21429, 1.21429), Vector2(1.20887, 1.20887), Vector2(1.20376, 1.20376), Vector2(1.20048, 1.20048), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_usij8"]
+_data = {
+&"RESET": SubResource("Animation_usij8"),
+&"change_card": SubResource("Animation_hak3o"),
+&"hover": SubResource("Animation_umxjb")
+}
+
+[node name="Card" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 178.0
+offset_bottom = 250.0
+pivot_offset = Vector2(89, 250)
+texture = ExtResource("1_umxjb")
+script = ExtResource("2_mcm81")
+
+[node name="Shadow" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.145098)
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 250.0
+texture = ExtResource("4_mcm81")
+
+[node name="CardVisible" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 250.0
+pivot_offset = Vector2(89, 125)
+texture = ExtResource("4_22eh6")
+
+[node name="CardIcon" type="TextureRect" parent="CardVisible"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_usij8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_usij8")
+}
+
+[node name="TransitionCard" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 250.0
+rotation = 0.261799
+pivot_offset = Vector2(89, 250)
+texture = ExtResource("1_umxjb")
+
+[node name="CardIcon" type="TextureRect" parent="TransitionCard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_usij8")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

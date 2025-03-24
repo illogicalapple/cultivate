@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8ik4tbp2pxek"]
+
+[ext_resource type="Texture2D" uid="uid://c7crgb8ex11mt" path="res://images/attacks/punch.png" id="1_ak75r"]
+[ext_resource type="Script" uid="uid://3ems8jatiqh0" path="res://scenes/attacks/punch.gd" id="2_j23ll"]
+[ext_resource type="AudioStream" uid="uid://2g6x2y07p7dr" path="res://sounds/cards/swing.wav" id="3_427j6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7bmm"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_up5ku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cjy0i"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3),
+"transitions": PackedFloat32Array(1.51572, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.51572),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.999842, 0.999842), Vector2(0.999568, 0.999568), Vector2(0.999111, 0.999111), Vector2(0.998346, 0.998346), Vector2(0.997069, 0.997069), Vector2(0.994934, 0.994934), Vector2(0.991367, 0.991367), Vector2(0.985407, 0.985407), Vector2(0.975447, 0.975447), Vector2(0.958803, 0.958803), Vector2(0.930991, 0.930991), Vector2(0.884516, 0.884516), Vector2(0.806854, 0.806854), Vector2(0.693243, 0.693243), Vector2(0.615542, 0.615542), Vector2(0.569044, 0.569044), Vector2(0.541218, 0.541218), Vector2(0.524566, 0.524566), Vector2(0.5146, 0.5146), Vector2(0.508637, 0.508637), Vector2(0.505068, 0.505068), Vector2(0.502933, 0.502933), Vector2(0.501655, 0.501655), Vector2(0.50089, 0.50089), Vector2(0.500432, 0.500432), Vector2(0.500158, 0.500158), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uk652"]
+_data = {
+&"RESET": SubResource("Animation_up5ku"),
+&"hit": SubResource("Animation_cjy0i")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h17bg"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("3_427j6")
+
+[node name="Punch" type="Sprite2D"]
+self_modulate = Color(0.576471, 0.576471, 0.576471, 1)
+texture = ExtResource("1_ak75r")
+script = ExtResource("2_j23ll")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_s7bmm")
+target_position = Vector2(0, 0)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uk652")
+}
+autoplay = "hit"
+speed_scale = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_h17bg")
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

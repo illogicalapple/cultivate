@@ -1,0 +1,260 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6aamvcmupg7h"]
+
+[ext_resource type="Script" uid="uid://hipyi0b5usk1" path="res://scenes/ui/hud/cards.gd" id="1_2hx40"]
+[ext_resource type="PackedScene" uid="uid://csumvciuxk0t7" path="res://scenes/ui/hud/card.tscn" id="2_fy3al"]
+[ext_resource type="AudioStream" uid="uid://bvvaf0b8s85tk" path="res://sounds/cards/hover_1.wav" id="3_gmwjm"]
+[ext_resource type="AudioStream" uid="uid://c31ck4hhptwnf" path="res://sounds/cards/hover_2.wav" id="4_gftfj"]
+[ext_resource type="AudioStream" uid="uid://bdkj1lqo8vdam" path="res://sounds/cards/hover_3.wav" id="5_i76hr"]
+[ext_resource type="AudioStream" uid="uid://caxrpbh5ftmhv" path="res://sounds/cards/hover_4.wav" id="6_6k0p2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wa0j"]
+size = Vector2(540, 305)
+
+[sub_resource type="Animation" id="Animation_cdofo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.148)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardContainer/CardMiddle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(487, 342)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardContainer/CardMiddle:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardContainer/CardLeft:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.174533]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CardContainer/CardRight:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.174533]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CardContainer:anchors_preset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_j8th6"]
+resource_name = "hover"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3),
+"transitions": PackedFloat32Array(2.46229, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.46229),
+"update": 0,
+"values": [Vector2(0, 224), Vector2(0, 223.954), Vector2(0, 223.636), Vector2(0, 222.771), Vector2(0, 221.087), Vector2(0, 218.31), Vector2(0, 214.167), Vector2(0, 208.386), Vector2(0, 200.693), Vector2(0, 190.815), Vector2(0, 178.478), Vector2(0, 163.411), Vector2(0, 145.339), Vector2(0, 123.989), Vector2(0, 100.011), Vector2(0, 78.6612), Vector2(0, 60.5891), Vector2(0, 45.5215), Vector2(0, 33.1852), Vector2(0, 23.307), Vector2(0, 15.6139), Vector2(0, 9.83266), Vector2(0, 5.69019), Vector2(0, 2.91338), Vector2(0, 1.22908), Vector2(0, 0.364166), Vector2(0, 0.045517), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1.68179, 1.68179),
+"update": 0,
+"values": [Color(1, 1, 1, 0.148), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fvj3a"]
+_data = {
+&"RESET": SubResource("Animation_cdofo"),
+&"hover": SubResource("Animation_j8th6")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mlm0o"]
+random_pitch = 1.5
+streams_count = 4
+stream_0/stream = ExtResource("3_gmwjm")
+stream_1/stream = ExtResource("4_gftfj")
+stream_2/stream = ExtResource("5_i76hr")
+stream_3/stream = ExtResource("6_6k0p2")
+
+[node name="Cards" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_2hx40")
+
+[node name="CardContainer" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.148)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CardLeft" parent="CardContainer" instance=ExtResource("2_fy3al")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -290.0
+offset_right = -26.999
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.174533
+pivot_offset = Vector2(89, 400)
+mouse_filter = 1
+
+[node name="CardRight" parent="CardContainer" instance=ExtResource("2_fy3al")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -290.0
+offset_right = 205.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.174533
+pivot_offset = Vector2(89, 400)
+mouse_filter = 1
+has_card = false
+inventory_slot = 1
+
+[node name="CardMiddle" parent="CardContainer" instance=ExtResource("2_fy3al")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 487.0
+offset_top = 342.0
+offset_right = 665.0
+offset_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(89, 400)
+mouse_filter = 1
+has_card = false
+inventory_slot = 2
+
+[node name="HoverDetectWrapper" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HoverDetect" type="Area2D" parent="HoverDetectWrapper"]
+position = Vector2(0, -104)
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="HoverCollisions" type="CollisionShape2D" parent="HoverDetectWrapper/HoverDetect"]
+unique_name_in_owner = true
+position = Vector2(0, -47.5)
+shape = SubResource("RectangleShape2D_1wa0j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fvj3a")
+}
+autoplay = "RESET"
+speed_scale = 2.0
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_mlm0o")
+
+[node name="BlurSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_mlm0o")
+volume_db = -4.0
+pitch_scale = 0.8
+
+[connection signal="gui_input" from="CardContainer/CardLeft" to="." method="_on_card_left_gui_input"]
+[connection signal="gui_input" from="CardContainer/CardRight" to="." method="_on_card_right_gui_input"]
+[connection signal="gui_input" from="CardContainer/CardMiddle" to="." method="_on_card_middle_gui_input"]
+[connection signal="mouse_entered" from="HoverDetectWrapper/HoverDetect" to="." method="_on_hover_detect_mouse_entered"]
+[connection signal="mouse_exited" from="HoverDetectWrapper/HoverDetect" to="." method="_on_hover_detect_mouse_exited"]
