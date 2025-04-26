@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsnyjj1dntrib"]
 
-[ext_resource type="Script" path="res://scenes/platforms/platform_glow.gd" id="1_rr7cr"]
+[ext_resource type="Script" uid="uid://jxa00dlfixck" path="res://scenes/platforms/platform_glow.gd" id="1_rr7cr"]
 [ext_resource type="Texture2D" uid="uid://cfbklgxspp7af" path="res://images/platforms/platform_generic_inner.png" id="2_eaun2"]
-[ext_resource type="Script" path="res://scenes/platforms/size_setter_tool.gd" id="3_gdlqr"]
+[ext_resource type="Script" uid="uid://4q1wb7ejy4td" path="res://scenes/platforms/size_setter_tool.gd" id="3_gdlqr"]
 [ext_resource type="Texture2D" uid="uid://biikgao30y4gg" path="res://images/platforms/platform_generic_outline.png" id="3_yegqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hsf8d"]

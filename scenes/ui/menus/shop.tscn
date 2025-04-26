@@ -1,0 +1,244 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6a3l8t06yahp"]
+
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="1_tllji"]
+[ext_resource type="Shader" uid="uid://gvyp8l2u833u" path="res://shaders/scroll.gdshader" id="2_ebf16"]
+[ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="3_01dn3"]
+[ext_resource type="Texture2D" uid="uid://6wpwtl0v5ssp" path="res://images/ui/card.png" id="4_ebf16"]
+[ext_resource type="Texture2D" uid="uid://ctr6rqepdni2t" path="res://images/ui/shop_wood.png" id="4_st26q"]
+[ext_resource type="Texture2D" uid="uid://cohv6jnhujqlt" path="res://images/ui/card_shadow.png" id="5_01dn3"]
+[ext_resource type="Texture2D" uid="uid://dqygq6oi7xjiq" path="res://images/card_icons/punch.png" id="7_865w2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_st26q"]
+shader = ExtResource("2_ebf16")
+shader_parameter/motion = Vector2(10, 10)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_865w2"]
+font_size = 48
+font_color = Color(0.87, 1, 0.898167, 1)
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_434xk"]
+resource_local_to_scene = true
+font_size = 48
+font_color = Color(1, 0.87, 0.87, 1)
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tllji")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.32, 0.32, 0.32, 1)
+material = SubResource("ShaderMaterial_st26q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_01dn3")
+stretch_mode = 1
+
+[node name="Board" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 30.0
+offset_right = 809.0
+offset_bottom = 542.0
+texture = ExtResource("4_st26q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Board"]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 694.0
+offset_bottom = 427.0
+theme_override_constants/separation = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Board/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Board/VBoxContainer/HBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave]shop[/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Shadow" type="RichTextLabel" parent="Board/VBoxContainer/HBoxContainer/RichTextLabel"]
+modulate = Color(0, 0, 0, 0.113725)
+show_behind_parent = true
+clip_contents = false
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 646.0
+offset_bottom = 81.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave]shop[/wave]"
+fit_content = true
+
+[node name="Button" type="Button" parent="Board/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "reroll"
+
+[node name="Cards" type="HBoxContainer" parent="Board/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="ShopCard" type="TextureRect" parent="Board/VBoxContainer/Cards"]
+layout_mode = 2
+texture = ExtResource("4_ebf16")
+
+[node name="Shadow" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard"]
+modulate = Color(1, 1, 1, 0.337255)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 194.0
+offset_bottom = 266.0
+texture = ExtResource("5_01dn3")
+
+[node name="Icon" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_865w2")
+
+[node name="Label" type="Label" parent="Board/VBoxContainer/Cards/ShopCard"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -41.0
+offset_right = 46.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$16"
+label_settings = SubResource("LabelSettings_865w2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ShopCard2" type="TextureRect" parent="Board/VBoxContainer/Cards"]
+layout_mode = 2
+texture = ExtResource("4_ebf16")
+
+[node name="Shadow" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard2"]
+modulate = Color(1, 1, 1, 0.337255)
+show_behind_parent = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 194.0
+offset_bottom = 266.0
+texture = ExtResource("5_01dn3")
+
+[node name="Icon" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_865w2")
+
+[node name="Label" type="Label" parent="Board/VBoxContainer/Cards/ShopCard2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -41.0
+offset_right = 46.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$16"
+label_settings = SubResource("LabelSettings_865w2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ShopCard3" type="TextureRect" parent="Board/VBoxContainer/Cards"]
+layout_mode = 2
+texture = ExtResource("4_ebf16")
+
+[node name="Shadow" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard3"]
+modulate = Color(1, 1, 1, 0.337255)
+show_behind_parent = true
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 194.0
+offset_bottom = 266.0
+texture = ExtResource("5_01dn3")
+
+[node name="Icon" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_865w2")
+
+[node name="Label" type="Label" parent="Board/VBoxContainer/Cards/ShopCard3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -41.0
+offset_right = 46.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$23"
+label_settings = SubResource("LabelSettings_434xk")
+horizontal_alignment = 1
+vertical_alignment = 2
