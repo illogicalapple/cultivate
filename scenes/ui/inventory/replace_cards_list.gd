@@ -1,4 +1,5 @@
 extends HBoxContainer
+signal card_replaced
 
 var card_scene: PackedScene = preload("res://scenes/ui/inventory/replace_card_card.tscn")
 
