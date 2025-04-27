@@ -42,3 +42,6 @@ func _on_gui_input(event: InputEvent) -> void:
 		update_texture($TransitionCard, new_card_name)
 		Inventory.set_slot(card_index, Inventory.Card.new(new_card_name))
 		$AnimationPlayer.play("change_card")
+		await $AnimationPlayer.animation_finished
+		await get_tree().create_timer(0.5).timeout
+		get_parent().card_replaced.emit()
