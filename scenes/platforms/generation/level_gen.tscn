@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4myx4d4mu7v0"]
+
+[ext_resource type="Script" uid="uid://nmsmyrc67ik1" path="res://scenes/platforms/generation/level_gen.gd" id="1_2liaw"]
+[ext_resource type="Script" uid="uid://7poki2b1i17k" path="res://scenes/platforms/generation/path_gen.gd" id="1_7cws7"]
+
+[sub_resource type="Curve" id="Curve_7cws7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="LevelGen" type="Node2D" node_paths=PackedStringArray("platform_target")]
+script = ExtResource("1_2liaw")
+platform_target = NodePath(".")
+
+[node name="PathGen" type="Line2D" parent="."]
+width_curve = SubResource("Curve_7cws7")
+default_color = Color(1, 0, 0, 1)
+script = ExtResource("1_7cws7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="ready" from="PathGen" to="." method="_on_path_gen_ready"]

@@ -199,6 +199,7 @@ _data = {
 }
 
 [node name="Inventory" type="Control" groups=["inventory"]]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -307,7 +308,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 39.0
 offset_right = 439.121
-offset_bottom = 2954.0
+offset_bottom = 4898.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 0

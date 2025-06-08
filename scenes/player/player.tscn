@@ -505,19 +505,19 @@ texture = ExtResource("3_ojwb4")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 16
+texture = ExtResource("8_1mk4q")
 lifetime = 0.4
 one_shot = true
 explosiveness = 0.6
-texture = ExtResource("8_1mk4q")
 process_material = SubResource("ParticleProcessMaterial_uhvml")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 16
+texture = ExtResource("8_1mk4q")
 lifetime = 0.4
 one_shot = true
 explosiveness = 0.6
-texture = ExtResource("8_1mk4q")
 process_material = SubResource("ParticleProcessMaterial_uhvml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -596,10 +596,10 @@ texture_progress = ExtResource("18_cw01s")
 position = Vector2(0, -24)
 emitting = false
 amount = 15
+texture = ExtResource("19_lgqa7")
 lifetime = 0.4
 one_shot = true
 explosiveness = 0.6
-texture = ExtResource("19_lgqa7")
 process_material = SubResource("ParticleProcessMaterial_yj68g")
 
 [connection signal="damaged" from="." to="HurtSFX" method="play" unbinds=2]

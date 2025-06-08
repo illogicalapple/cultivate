@@ -197,7 +197,7 @@ rotation = 0.174533
 pivot_offset = Vector2(89, 400)
 mouse_filter = 1
 has_card = false
-inventory_slot = 1
+inventory_slot = 2
 
 [node name="CardMiddle" parent="CardContainer" instance=ExtResource("2_fy3al")]
 unique_name_in_owner = true
@@ -215,8 +215,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(89, 400)
 mouse_filter = 1
-has_card = false
-inventory_slot = 2
+inventory_slot = 1
 
 [node name="HoverDetectWrapper" type="Control" parent="."]
 layout_mode = 1

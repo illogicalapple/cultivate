@@ -17,6 +17,7 @@ var card_texture: Texture2D = preload("res://images/ui/card.png")
 func _ready() -> void:
 	config_file.load("res://behavior/cards.cfg")
 	Inventory.update.connect(_on_inventory_update)
+	_on_inventory_update()
 	if has_card: card_changed(card)
 
 func _on_inventory_update():
@@ -28,7 +29,7 @@ func _on_inventory_update():
 func card_changed(new_card) -> void:
 	has_card = true
 	card = new_card
-	
+	print(config_file)
 	assert(config_file.has_section(new_card), "Card %s doesn't exist!" % new_card)
 	$CardIcon.texture = load(ICON_PATH % config_file.get_value(new_card, 'icon'))
 

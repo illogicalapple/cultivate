@@ -66,10 +66,10 @@ func _on_run_anim_current_animation_changed(name: String) -> void:
 	else:
 		$AnimatedSprite2D.animation = "idle"
 
-func damage(amount: float, origin: Character, projectile_velocity: Vector2 = Vector2(40000, 0)):
+func damage(amount: float, origin: Character, projectile_velocity: Vector2 = Vector2(40000, 0), kb_multiplier: float = 1.0):
 
 	health -= amount
-	velocity += (global_position - origin.position if projectile_velocity == Vector2(40000, 0) else projectile_velocity).normalized() * kb_coefficient
+	velocity += (global_position - origin.position if projectile_velocity == Vector2(40000, 0) else projectile_velocity).normalized() * kb_coefficient * kb_multiplier
 	
 	damaged.emit(amount, origin)
 	if health <= 0: death.emit(origin)

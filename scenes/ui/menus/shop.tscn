@@ -109,7 +109,7 @@ layout_mode = 2
 texture = ExtResource("4_ebf16")
 
 [node name="Shadow" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard"]
-modulate = Color(1, 1, 1, 0.337255)
+modulate = Color(1, 1, 1, 0.203922)
 show_behind_parent = true
 layout_mode = 0
 offset_left = 16.0
@@ -156,8 +156,9 @@ layout_mode = 2
 texture = ExtResource("4_ebf16")
 
 [node name="Shadow" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard2"]
-modulate = Color(1, 1, 1, 0.337255)
+modulate = Color(1, 1, 1, 0.203922)
 show_behind_parent = true
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 194.0
@@ -202,8 +203,9 @@ layout_mode = 2
 texture = ExtResource("4_ebf16")
 
 [node name="Shadow" type="TextureRect" parent="Board/VBoxContainer/Cards/ShopCard3"]
-modulate = Color(1, 1, 1, 0.337255)
+modulate = Color(1, 1, 1, 0.203922)
 show_behind_parent = true
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 194.0

@@ -176,7 +176,6 @@ text = "0"
 [node name="ReplaceCard" parent="UI" instance=ExtResource("12_kvuet")]
 
 [node name="Inventory" parent="UI" instance=ExtResource("11_t5c00")]
-visible = false
 z_index = 2
 
 [node name="Music" type="AudioStreamPlayer" parent="."]

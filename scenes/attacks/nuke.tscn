@@ -1,0 +1,340 @@
+[gd_scene load_steps=14 format=3 uid="uid://3po228wj3u6n"]
+
+[ext_resource type="Script" uid="uid://cqkjw1hb181wn" path="res://scenes/attacks/nuke.gd" id="1_biyme"]
+[ext_resource type="Texture2D" uid="uid://ddl40yqb2167d" path="res://images/attacks/nuke.png" id="1_r33f4"]
+[ext_resource type="AudioStream" uid="uid://blyfmnkafvbg3" path="res://sounds/cards/nuke_in.wav" id="2_5ykmb"]
+[ext_resource type="Texture2D" uid="uid://dg774y0n5nx85" path="res://images/attacks/nuke_warning.png" id="3_biyme"]
+[ext_resource type="Texture2D" uid="uid://y8c68oeq73og" path="res://images/attacks/explosion.png" id="4_5ykmb"]
+[ext_resource type="AudioStream" uid="uid://3y0xjxuvbvkr" path="res://sounds/cards/explosion.wav" id="4_n1d30"]
+
+[sub_resource type="Animation" id="Animation_do00y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5s70p"]
+resource_name = "rotate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnqk3"]
+_data = {
+&"RESET": SubResource("Animation_do00y"),
+&"rotate": SubResource("Animation_5s70p")
+}
+
+[sub_resource type="Animation" id="Animation_p3781"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Missile:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missile:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-500, -500)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missile/IncomingSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TargetArea:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TargetArea:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Explosion:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Missile:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_s46s2"]
+resource_name = "explode"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Missile:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2.07053, 2.07053),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missile:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3, 0.311111, 0.322222, 0.333333, 0.344444, 0.355556, 0.366667, 0.377778, 0.388889, 0.4, 0.411111, 0.422222, 0.433333, 0.444444, 0.455556, 0.466667, 0.477778, 0.488889, 0.5, 0.511111, 0.522222, 0.533333, 0.544444, 0.555556, 0.566667, 0.577778, 0.588889, 0.6, 0.611111, 0.622222, 0.633333, 0.644444, 0.655556, 0.666667, 0.677778, 0.688889, 0.7, 0.711111, 0.722222, 0.733333, 0.744444, 0.755556, 0.766667, 0.777778, 0.788889, 0.8, 0.811111, 0.822222, 0.833333, 0.844444, 0.855556, 0.866667, 0.877778, 0.888889, 0.9, 0.911111, 0.922222, 0.933333, 0.944444, 0.955556, 0.966667, 0.977778, 0.988889, 1),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.07053),
+"update": 0,
+"values": [Vector2(-500, -500), Vector2(-499.973, -499.973), Vector2(-499.93, -499.93), Vector2(-499.885, -499.885), Vector2(-499.836, -499.836), Vector2(-499.782, -499.782), Vector2(-499.725, -499.725), Vector2(-499.663, -499.663), Vector2(-499.596, -499.596), Vector2(-499.523, -499.523), Vector2(-499.445, -499.445), Vector2(-499.361, -499.361), Vector2(-499.27, -499.27), Vector2(-499.171, -499.171), Vector2(-499.065, -499.065), Vector2(-498.95, -498.95), Vector2(-498.826, -498.826), Vector2(-498.692, -498.692), Vector2(-498.547, -498.547), Vector2(-498.391, -498.391), Vector2(-498.222, -498.222), Vector2(-498.039, -498.039), Vector2(-497.842, -497.842), Vector2(-497.629, -497.629), Vector2(-497.4, -497.4), Vector2(-497.151, -497.151), Vector2(-496.883, -496.883), Vector2(-496.594, -496.594), Vector2(-496.281, -496.281), Vector2(-495.943, -495.943), Vector2(-495.578, -495.578), Vector2(-495.184, -495.184), Vector2(-494.759, -494.759), Vector2(-494.299, -494.299), Vector2(-493.803, -493.803), Vector2(-493.267, -493.267), Vector2(-492.688, -492.688), Vector2(-492.062, -492.062), Vector2(-491.387, -491.387), Vector2(-490.657, -490.657), Vector2(-489.869, -489.869), Vector2(-489.018, -489.018), Vector2(-488.098, -488.098), Vector2(-487.106, -487.106), Vector2(-486.033, -486.033), Vector2(-484.875, -484.875), Vector2(-483.624, -483.624), Vector2(-482.273, -482.273), Vector2(-480.814, -480.814), Vector2(-479.238, -479.238), Vector2(-477.535, -477.535), Vector2(-475.697, -475.697), Vector2(-473.711, -473.711), Vector2(-471.566, -471.566), Vector2(-469.25, -469.25), Vector2(-466.748, -466.748), Vector2(-464.046, -464.046), Vector2(-461.127, -461.127), Vector2(-457.975, -457.975), Vector2(-454.571, -454.571), Vector2(-450.894, -450.894), Vector2(-446.922, -446.922), Vector2(-442.633, -442.633), Vector2(-438, -438), Vector2(-432.996, -432.996), Vector2(-427.592, -427.592), Vector2(-421.755, -421.755), Vector2(-415.451, -415.451), Vector2(-408.642, -408.642), Vector2(-401.287, -401.287), Vector2(-393.344, -393.344), Vector2(-384.766, -384.766), Vector2(-375.5, -375.5), Vector2(-365.493, -365.493), Vector2(-354.684, -354.684), Vector2(-343.01, -343.01), Vector2(-330.401, -330.401), Vector2(-316.783, -316.783), Vector2(-302.075, -302.075), Vector2(-286.189, -286.189), Vector2(-269.031, -269.031), Vector2(-250.5, -250.5), Vector2(-230.485, -230.485), Vector2(-208.868, -208.868), Vector2(-185.52, -185.52), Vector2(-160.303, -160.303), Vector2(-133.066, -133.066), Vector2(-103.65, -103.65), Vector2(-71.878, -71.878), Vector2(-37.5627, -37.5627), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missile/IncomingSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TargetArea:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.511111, 0.522222, 0.533333, 0.544444, 0.555556, 0.566667, 0.577778, 0.588889, 0.6, 0.611111, 0.622222, 0.633333, 0.644444, 0.655556, 0.666667, 0.677778, 0.688889, 0.7, 0.711111, 0.722222, 0.733333, 0.744444, 0.755556, 0.766667, 0.777778, 0.78),
+"transitions": PackedFloat32Array(1.7411, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.7411),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.00009, 1.00009), Vector2(1.00021, 1.00021), Vector2(1.00037, 1.00037), Vector2(1.00058, 1.00058), Vector2(1.00086, 1.00086), Vector2(1.00123, 1.00123), Vector2(1.00171, 1.00171), Vector2(1.00235, 1.00235), Vector2(1.00318, 1.00318), Vector2(1.00429, 1.00429), Vector2(1.00574, 1.00574), Vector2(1.00765, 1.00765), Vector2(1.01017, 1.01017), Vector2(1.01348, 1.01348), Vector2(1.01784, 1.01784), Vector2(1.02358, 1.02358), Vector2(1.03115, 1.03115), Vector2(1.0411, 1.0411), Vector2(1.05421, 1.05421), Vector2(1.07147, 1.07147), Vector2(1.09419, 1.09419), Vector2(1.12411, 1.12411), Vector2(1.1635, 1.1635), Vector2(1.21536, 1.21536), Vector2(1.28364, 1.28364), Vector2(1.3, 1.3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TargetArea:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.511111, 0.522222, 0.533333, 0.544444, 0.555556, 0.566667, 0.577778, 0.588889, 0.6, 0.611111, 0.622222, 0.633333, 0.644444, 0.655556, 0.666667, 0.677778, 0.688889, 0.7, 0.711111, 0.722222, 0.733333, 0.744444, 0.755556, 0.766667, 0.777778, 0.78),
+"transitions": PackedFloat32Array(1.7411, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.7411),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.999714), Color(1, 1, 1, 0.999307), Color(1, 1, 1, 0.998771), Color(1, 1, 1, 0.998066), Color(1, 1, 1, 0.997136), Color(1, 1, 1, 0.995913), Color(1, 1, 1, 0.994303), Color(1, 1, 1, 0.992182), Color(1, 1, 1, 0.989391), Color(1, 1, 1, 0.985715), Color(1, 1, 1, 0.980876), Color(1, 1, 1, 0.974504), Color(1, 1, 1, 0.966115), Color(1, 1, 1, 0.955071), Color(1, 1, 1, 0.940529), Color(1, 1, 1, 0.921384), Color(1, 1, 1, 0.896177), Color(1, 1, 1, 0.862989), Color(1, 1, 1, 0.819293), Color(1, 1, 1, 0.761764), Color(1, 1, 1, 0.68602), Color(1, 1, 1, 0.586294), Color(1, 1, 1, 0.454995), Color(1, 1, 1, 0.282126), Color(1, 1, 1, 0.0545249), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.922222, 0.933333, 0.944444, 0.955556, 0.966667, 0.977778, 0.988889, 1, 1.01111, 1.02222, 1.03333, 1.04444, 1.05556, 1.06222, 1.6, 1.61111, 1.62222, 1.63333, 1.64444, 1.65556, 1.66667, 1.67778, 1.68889, 1.7),
+"transitions": PackedFloat32Array(1.7411, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.7411, 1.8025, 1, 1, 1, 1, 1, 1, 1, 1, 1.8025),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.884708, 0.884708), Vector2(0.933575, 0.933575), Vector2(0.961765, 0.961765), Vector2(0.978028, 0.978028), Vector2(0.987409, 0.987409), Vector2(0.992821, 0.992821), Vector2(0.995943, 0.995943), Vector2(0.997744, 0.997744), Vector2(0.998783, 0.998783), Vector2(0.999383, 0.999383), Vector2(0.999729, 0.999729), Vector2(0.999928, 0.999928), Vector2(1, 1), Vector2(1, 1), Vector2(0.994513, 0.994513), Vector2(0.956105, 0.956105), Vector2(0.851853, 0.851853), Vector2(0.648838, 0.648838), Vector2(0.351173, 0.351173), Vector2(0.148157, 0.148157), Vector2(0.0439054, 0.0439054), Vector2(0.00549692, 0.00549692), Vector2(1e-05, 1e-05)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Explosion:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.962222, 0.975556, 1.06179),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Missile:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.107698, 0.997355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"damage"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_io10n"]
+_data = {
+&"RESET": SubResource("Animation_p3781"),
+&"explode": SubResource("Animation_s46s2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ykmb"]
+radius = 64.0
+
+[node name="Nuke" type="Node2D"]
+script = ExtResource("1_biyme")
+
+[node name="Missile" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-500, -500)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_r33f4")
+
+[node name="IncomingSound" type="AudioStreamPlayer2D" parent="Missile"]
+scale = Vector2(100000, 100000)
+stream = ExtResource("2_5ykmb")
+volume_db = 10.0
+panning_strength = 2.0
+
+[node name="TargetArea" type="Sprite2D" parent="."]
+texture = ExtResource("3_biyme")
+
+[node name="RotateAnimation" type="AnimationPlayer" parent="TargetArea"]
+libraries = {
+&"": SubResource("AnimationLibrary_mnqk3")
+}
+autoplay = "rotate"
+speed_scale = 0.5
+
+[node name="Explosion" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_5ykmb")
+
+[node name="ExplodeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_io10n")
+}
+autoplay = "explode"
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n1d30")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_5ykmb")
+target_position = Vector2(0, 0)
+collision_mask = 10
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="animation_finished" from="ExplodeAnimation" to="." method="_on_explode_animation_animation_finished"]
