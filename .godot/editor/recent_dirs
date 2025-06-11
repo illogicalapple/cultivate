@@ -1,4 +1,6 @@
 res://scenes/attacks
+/home/apple/Documents/GitHub/cultivate/behavior/
+res://scenes/ui/hud
 res://scenes/platforms/generation
 res://scenes/ui/menus
 res://shaders
@@ -10,7 +12,6 @@ res://orphans
 res://images/enemies/cultivator
 res://
 res://scenes/vfx
-/home/apple/Documents/GitHub/cultivate/behavior/
 res://scenes/enemies/cultivator
 res://images/player
 res://scenes/platforms

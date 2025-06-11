@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	var max_health: float = get_parent().max_health
 	
 	max_value = max_health
-	true_value = lerpf(true_value, health, 4.0 * delta) if health_visible else health
+	true_value = lerpf(true_value, health, 8.0 * delta) if health_visible else health
 	value = true_value
 	
 	if health != max_health and not health_visible:

@@ -9,7 +9,7 @@ class Card extends Object:
 		self.card_name = card_name
 		self.is_empty = is_empty
 
-var inventory: Array[Card] = [Card.new("punch"), Card.new("nuke"), Card.new("empty", true)]
+var inventory: Array[Card] = [Card.new("red potion"), Card.new("nuke"), Card.new("blue potion")]
 var inventory_size: int = 3
 
 func set_slot(card_index: int, new_card: Card):

@@ -161,7 +161,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="CardLeft" parent="CardContainer" instance=ExtResource("2_fy3al")]
+[node name="CardLeft" parent="CardContainer" groups=["ui_card"] instance=ExtResource("2_fy3al")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -179,7 +179,7 @@ rotation = -0.174533
 pivot_offset = Vector2(89, 400)
 mouse_filter = 1
 
-[node name="CardRight" parent="CardContainer" instance=ExtResource("2_fy3al")]
+[node name="CardRight" parent="CardContainer" groups=["ui_card"] instance=ExtResource("2_fy3al")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -196,10 +196,9 @@ grow_vertical = 0
 rotation = 0.174533
 pivot_offset = Vector2(89, 400)
 mouse_filter = 1
-has_card = false
 inventory_slot = 2
 
-[node name="CardMiddle" parent="CardContainer" instance=ExtResource("2_fy3al")]
+[node name="CardMiddle" parent="CardContainer" groups=["ui_card"] instance=ExtResource("2_fy3al")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -207,10 +206,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 487.0
-offset_top = 342.0
-offset_right = 665.0
-offset_bottom = 592.0
+offset_left = -89.0
+offset_top = -306.0
+offset_right = 89.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(89, 400)

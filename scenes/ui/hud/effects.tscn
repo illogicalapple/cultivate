@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctrpbk4r0qoja"]
+
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="1_rxq4e"]
+[ext_resource type="Script" uid="uid://c6cfy8ckomr7" path="res://scenes/ui/hud/effects.gd" id="2_rxq4e"]
+
+[node name="Effects" type="VBoxContainer"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 80.0
+theme = ExtResource("1_rxq4e")
+script = ExtResource("2_rxq4e")

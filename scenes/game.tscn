@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=19 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ejsp30dq0c57" path="res://scenes/ui/inventory/inventory.tscn" id="11_t5c00"]
 [ext_resource type="AudioStream" uid="uid://bam0ek02nk4jk" path="res://sounds/music/temp_music.mp3" id="12_4w0bt"]
 [ext_resource type="PackedScene" uid="uid://dt0trvx0b8r44" path="res://scenes/ui/inventory/replace_card.tscn" id="12_kvuet"]
+[ext_resource type="PackedScene" uid="uid://ctrpbk4r0qoja" path="res://scenes/ui/hud/effects.tscn" id="13_trtic"]
 
 [sub_resource type="Environment" id="Environment_tej1b"]
 background_mode = 3
@@ -177,6 +178,8 @@ text = "0"
 
 [node name="Inventory" parent="UI" instance=ExtResource("11_t5c00")]
 z_index = 2
+
+[node name="Effects" parent="UI" instance=ExtResource("13_trtic")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_4w0bt")

@@ -12,7 +12,44 @@ signal death(origin: Character)
 var facing: int = 1
 var animation_queue: StringName = &""
 
-@onready var health: float = max_health
+@onready var health: float = max_health:
+	set(new_health):
+		health = clamp(new_health, 0, max_health)
+@onready var effects: EffectManager = EffectManager.new(self)
+
+class EffectManager:
+	signal effect_added(effect_name: String, effect_duration: float)
+	
+	var _effects_list: Dictionary[String, Effect] = {}
+	var _effects_cfg: ConfigFile = ConfigFile.new()
+	
+	var _parent: Character
+	
+	func _init(parent: Character):
+		_effects_cfg.load("res://behavior/effects.cfg")
+		_parent = parent
+	
+	func add_effect(effect_name: String, effect_duration: float):
+		assert(_effects_cfg.has_section(effect_name), "effect %s doesn't exist!" % effect_name)
+		
+		if _effects_list.has(effect_name) and is_instance_valid(_effects_list[effect_name]): # short-circuit
+			if _effects_list[effect_name].get_time_left() > effect_duration:
+				return # it has so much more to live for!
+			_effects_list[effect_name].end_early()
+		
+		var effect_node: Effect = Effect.new()
+		effect_node.set_script(load("res://scenes/effects/%s" % _effects_cfg.get_value(effect_name, "script")))
+		effect_node.effect_name = effect_name
+		effect_node.effect_duration = effect_duration
+		effect_node.tick_length = _effects_cfg.get_value(effect_name, "tick_length", 1.0)
+		_parent.add_child(effect_node)
+		
+		_effects_list.set(effect_name, effect_node)
+		
+		effect_added.emit(effect_name, effect_duration)
+	
+	func get_effect(effect_name: String) -> Effect:
+		return _effects_list[effect_name]
 
 func _ready() -> void:
 	facing = start_facing

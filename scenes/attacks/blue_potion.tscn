@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://c33hvacduwv8u"]
+
+[ext_resource type="Script" uid="uid://cei3hqierr7vx" path="res://scenes/attacks/blue_potion.gd" id="1_co17k"]
+[ext_resource type="Texture2D" uid="uid://nvtpxmunms8n" path="res://images/effect_icons/reload_speed.png" id="2_co17k"]
+[ext_resource type="AudioStream" uid="uid://drya6q7nafn77" path="res://sounds/cards/potion.wav" id="3_2uvbv"]
+[ext_resource type="Texture2D" uid="uid://cyp0ewytebtf2" path="res://images/attacks/reload_effect_bubble.png" id="3_tcqkx"]
+
+[sub_resource type="Animation" id="Animation_7ngja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Heart:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart/Bubble:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Heart/Bubble:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.501961)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6qg70"]
+resource_name = "effect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3, 0.311111, 0.322222, 0.333333, 0.344444, 0.355556, 0.366667, 0.377778, 0.388889, 0.4, 0.411111, 0.422222, 0.433333, 0.444444, 0.455556, 0.466667),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.07053),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.255388, 0.255388), Vector2(0.609978, 0.609978), Vector2(0.954452, 0.954452), Vector2(1.21254, 1.21254), Vector2(1.34927, 1.34927), Vector2(1.36735, 1.36735), Vector2(1.29598, 1.29598), Vector2(1.17671, 1.17671), Vector2(1.05039, 1.05039), Vector2(0.948003, 0.948003), Vector2(0.886344, 0.886344), Vector2(0.86812, 0.86812), Vector2(0.885305, 0.885305), Vector2(0.923999, 0.923999), Vector2(0.969268, 0.969268), Vector2(1.00887, 1.00887), Vector2(1.0353, 1.0353), Vector2(1.04619, 1.04619), Vector2(1.04342, 1.04342), Vector2(1.03145, 1.03145), Vector2(1.01562, 1.01562), Vector2(1.00066, 1.00066), Vector2(0.989751, 0.989751), Vector2(0.984263, 0.984263), Vector2(0.983931, 0.983931), Vector2(0.987383, 0.987383), Vector2(0.992762, 0.992762), Vector2(0.998291, 0.998291), Vector2(1.00266, 1.00266), Vector2(1.00519, 1.00519), Vector2(1.00581, 1.00581), Vector2(1.00493, 1.00493), Vector2(1.00316, 1.00316), Vector2(1.00116, 1.00116), Vector2(0.999462, 0.999462), Vector2(0.998361, 0.998361), Vector2(0.997946, 0.997946), Vector2(0.99812, 0.99812), Vector2(0.998676, 0.998676), Vector2(0.99938, 0.99938), Vector2(1.00003, 1.00003), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Heart:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0111111, 0.0222222, 0.0333333, 0.0444444, 0.0555556, 0.0666667, 0.0777778, 0.0888889, 0.1, 0.111111, 0.122222, 0.133333, 0.144444, 0.155556, 0.166667, 0.177778, 0.188889, 0.2, 0.211111, 0.222222, 0.233333, 0.244444, 0.255556, 0.266667, 0.277778, 0.288889, 0.3, 0.311111, 0.322222, 0.333333, 0.344444, 0.355556, 0.366667, 0.377778, 0.388889, 0.4, 0.411111, 0.42, 0.431111, 0.442222, 0.453333, 0.464444, 0.475556, 0.486667, 0.497778, 0.508889, 0.52, 0.531111, 0.542222, 0.553333, 0.564444, 0.575556, 0.586667, 0.597778, 0.608889, 0.62, 0.631111, 0.642222, 0.653333, 0.664444, 0.675556, 0.686667, 0.697778, 0.708889, 0.71, 0.721111, 0.732222, 0.743333, 0.754444, 0.765556, 0.776667, 0.787778, 0.798889, 0.81, 0.821111, 0.832222, 0.843333, 0.854444, 0.865556, 0.876667, 0.887778, 0.898889, 0.91, 0.921111, 0.932222, 0.943333, 0.954444, 0.965556, 0.976667, 0.987778, 0.998889, 1),
+"transitions": PackedFloat32Array(1.68179, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.68179, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.68179, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.68179),
+"update": 0,
+"values": [Vector2(0, 20), Vector2(0, 19.9985), Vector2(0, 19.9881), Vector2(0, 19.96), Vector2(0, 19.9052), Vector2(0, 19.8148), Vector2(0, 19.6801), Vector2(0, 19.4919), Vector2(0, 19.2416), Vector2(0, 18.9202), Vector2(0, 18.5188), Vector2(0, 18.0285), Vector2(0, 17.4405), Vector2(0, 16.7458), Vector2(0, 15.9356), Vector2(0, 15.0009), Vector2(0, 13.933), Vector2(0, 12.7228), Vector2(0, 11.3616), Vector2(0, 9.8421), Vector2(0, 8.35362), Vector2(0, 7.02332), Vector2(0, 5.84233), Vector2(0, 4.80175), Vector2(0, 3.89271), Vector2(0, 3.10631), Vector2(0, 2.43366), Vector2(0, 1.86589), Vector2(0, 1.3941), Vector2(0, 1.0094), Vector2(0, 0.702908), Vector2(0, 0.465738), Vector2(0, 0.289), Vector2(0, 0.163809), Vector2(0, 0.0812759), Vector2(0, 0.0325165), Vector2(0, 0.00863838), Vector2(0, 0.000759125), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, -0.00449954), Vector2(0, -0.0359963), Vector2(0, -0.121488), Vector2(0, -0.287971), Vector2(0, -0.562443), Vector2(0, -0.971901), Vector2(0, -1.54334), Vector2(0, -2.30377), Vector2(0, -3.28017), Vector2(0, -4.49954), Vector2(0, -5.98889), Vector2(0, -7.77521), Vector2(0, -9.8855), Vector2(0, -12.0288), Vector2(0, -13.8463), Vector2(0, -15.3641), Vector2(0, -16.6093), Vector2(0, -17.6088), Vector2(0, -18.3896), Vector2(0, -18.9787), Vector2(0, -19.4031), Vector2(0, -19.6899), Vector2(0, -19.866), Vector2(0, -19.9583), Vector2(0, -19.994), Vector2(0, -20), Vector2(0, -20)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Heart/Bubble:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Heart/Bubble:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sr1ob"]
+_data = {
+&"RESET": SubResource("Animation_7ngja"),
+&"effect": SubResource("Animation_6qg70")
+}
+
+[node name="BluePotion" type="Node2D"]
+script = ExtResource("1_co17k")
+
+[node name="Heart" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_co17k")
+offset = Vector2(0, 40)
+
+[node name="Bubble" type="Sprite2D" parent="Heart"]
+modulate = Color(1, 1, 1, 0.501961)
+show_behind_parent = true
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_tcqkx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sr1ob")
+}
+autoplay = "effect"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2uvbv")

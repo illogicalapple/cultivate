@@ -29,6 +29,7 @@ player="The player. There's one of them"
 rice_ui="rice bowl that rice particles move toward"
 inventory=""
 replace_card="Card replace ui"
+ui_card=""
 
 [input]
 
