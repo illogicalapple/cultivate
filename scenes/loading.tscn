@@ -1,0 +1,441 @@
+[gd_scene load_steps=37 format=3 uid="uid://b82fca4beobjk"]
+
+[ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="1_ir5ef"]
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="1_yc7uc"]
+[ext_resource type="Shader" uid="uid://gvyp8l2u833u" path="res://shaders/scroll.gdshader" id="2_ffpfu"]
+[ext_resource type="Script" uid="uid://bfo3s46xe07fu" path="res://scenes/loading.gd" id="2_se4la"]
+[ext_resource type="PackedScene" uid="uid://bsnyjj1dntrib" path="res://scenes/platforms/platform_normal.tscn" id="3_pjhx7"]
+[ext_resource type="Texture2D" uid="uid://b2cuhdnnhn6dr" path="res://images/player/idle_1.png" id="4_xn74e"]
+[ext_resource type="Texture2D" uid="uid://ywpmasbgiulv" path="res://images/player/idle_2.png" id="5_x5boc"]
+[ext_resource type="Texture2D" uid="uid://bbe2miexqgqcc" path="res://images/player/run_1.png" id="6_gspuy"]
+[ext_resource type="Texture2D" uid="uid://dv3631wqdkqma" path="res://images/player/run_2.png" id="7_f8gjb"]
+[ext_resource type="Texture2D" uid="uid://cpe0fkpomu8hf" path="res://images/player/weapon_idle_1.png" id="8_ffpfu"]
+[ext_resource type="Texture2D" uid="uid://bps6sleyuegis" path="res://images/player/weapon_idle_2.png" id="9_buusq"]
+[ext_resource type="Texture2D" uid="uid://bcwuq2wq0w2tg" path="res://images/player/weapon_run_1.png" id="10_se4la"]
+[ext_resource type="Texture2D" uid="uid://5xnn3s6nc6oe" path="res://images/player/weapon_run_2.png" id="11_i1ib6"]
+[ext_resource type="Texture2D" uid="uid://cxwdqha2x1g4c" path="res://images/enemies/cultivator/idle_1.png" id="13_f8gjb"]
+[ext_resource type="AnimationLibrary" uid="uid://cr3eryama6a7r" path="res://character_anims.res" id="13_jrjsk"]
+[ext_resource type="Texture2D" uid="uid://ch5axhisdpt4q" path="res://images/particles/footsteps.png" id="14_buusq"]
+[ext_resource type="Texture2D" uid="uid://coifk3xlvbpmk" path="res://images/enemies/cultivator/idle_2.png" id="14_ffpfu"]
+[ext_resource type="Texture2D" uid="uid://dbveapuha0a7k" path="res://images/enemies/cultivator/run_1.png" id="15_buusq"]
+[ext_resource type="Texture2D" uid="uid://s15np2jo7qj4" path="res://images/enemies/cultivator/run_2.png" id="16_se4la"]
+[ext_resource type="Texture2D" uid="uid://biviwtdtiiavr" path="res://images/enemies/cultivator/throw_1.png" id="17_i1ib6"]
+[ext_resource type="Texture2D" uid="uid://8201ftuaw68q" path="res://images/enemies/cultivator/throw_2.png" id="18_sdmdu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buusq"]
+shader = ExtResource("2_ffpfu")
+shader_parameter/motion = Vector2(80, 0)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_ir5ef"]
+resource_name = "in"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yc7uc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_se4la"]
+resource_name = "out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhqfv"]
+_data = {
+&"RESET": SubResource("Animation_yc7uc"),
+&"in": SubResource("Animation_ir5ef"),
+&"out": SubResource("Animation_se4la")
+}
+
+[sub_resource type="Environment" id="Environment_dhqfv"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 1.0
+glow_hdr_threshold = 1.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5f2ii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xn74e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x5boc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gspuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f8gjb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ffpfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_buusq")
+}],
+"loop": true,
+"name": &"weapon_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_se4la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i1ib6")
+}],
+"loop": true,
+"name": &"weapon_run",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_se4la"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_buusq"]
+curve = SubResource("Curve_se4la")
+
+[sub_resource type="Gradient" id="Gradient_i1ib6"]
+interpolation_mode = 2
+colors = PackedColorArray(0.43134, 0.43134, 0.43134, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_se4la"]
+gradient = SubResource("Gradient_i1ib6")
+
+[sub_resource type="Curve" id="Curve_sdmdu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.626667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i1ib6"]
+curve = SubResource("Curve_sdmdu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jrjsk"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+radial_velocity_min = -40.0
+radial_velocity_max = 40.0
+gravity = Vector3(-200, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_i1ib6")
+color_ramp = SubResource("GradientTexture1D_se4la")
+anim_speed_curve = SubResource("CurveTexture_buusq")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrjsk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f8gjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ffpfu")
+}],
+"loop": true,
+"name": &"alert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f8gjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ffpfu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_buusq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_se4la")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_i1ib6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sdmdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_i1ib6")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ffpfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_buusq")
+}],
+"loop": true,
+"name": &"weapon_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_se4la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i1ib6")
+}],
+"loop": true,
+"name": &"weapon_run",
+"speed": 5.0
+}]
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yc7uc")
+script = ExtResource("2_se4la")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.400698, 0.400698, 0.400698, 1)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.556953, 0.556953, 0.556953, 1)
+z_index = -10
+texture_repeat = 2
+material = SubResource("ShaderMaterial_buusq")
+texture = ExtResource("1_ir5ef")
+centered = false
+region_enabled = true
+region_rect = Rect2(-254, -44, 1920, 1080)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dhqfv")
+}
+autoplay = "in"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dhqfv")
+
+[node name="Animation" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -56.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="NormalPlatform" parent="Animation" instance=ExtResource("3_pjhx7")]
+size = Vector2(256, 128)
+
+[node name="Goober" type="AnimatedSprite2D" parent="Animation"]
+unique_name_in_owner = true
+position = Vector2(56, -29)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_5f2ii")
+animation = &"run"
+speed_scale = 0.4
+
+[node name="RunAnim" type="AnimationPlayer" parent="Animation/Goober"]
+libraries = {
+&"": ExtResource("13_jrjsk")
+}
+autoplay = "run"
+speed_scale = 3.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Animation/Goober"]
+position = Vector2(2.7890015, 31.878296)
+emitting = false
+amount = 16
+texture = ExtResource("14_buusq")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_jrjsk")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Animation/Goober"]
+position = Vector2(2.7890015, 31.878296)
+emitting = false
+amount = 16
+texture = ExtResource("14_buusq")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_jrjsk")
+
+[node name="Enemy" type="AnimatedSprite2D" parent="Animation"]
+position = Vector2(-40, -29)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_jrjsk")
+animation = &"run"
+speed_scale = 0.4
+
+[node name="RunAnim" type="AnimationPlayer" parent="Animation/Enemy"]
+libraries = {
+&"": ExtResource("13_jrjsk")
+}
+autoplay = "run"
+speed_scale = 3.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Animation/Enemy"]
+position = Vector2(2.7890015, 31.878296)
+emitting = false
+amount = 16
+texture = ExtResource("14_buusq")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_jrjsk")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Animation/Enemy"]
+position = Vector2(2.7890015, 31.878296)
+emitting = false
+amount = 16
+texture = ExtResource("14_buusq")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_jrjsk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = 57.0
+offset_right = 110.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 48
+text = "loading..."
+horizontal_alignment = 1
+
+[node name="Tip" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "tip: you can nuke yourself"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

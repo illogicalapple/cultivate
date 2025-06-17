@@ -5,8 +5,9 @@ extends Node
 
 func _process(_delta):
 	var size = get_parent().size
-	$"../NinePatchRect".custom_minimum_size = size
-	$"../NinePatchRect".set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	$"../Border".custom_minimum_size = size
+	$"../Border/Fill".custom_minimum_size = size - Vector2(20, 20)
+	$"../Border/Fill".set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	if particles:
 		($"../GPUParticles2D".process_material as ParticleProcessMaterial).emission_box_extents.x = size.x / 2
 		($"../GPUParticles2D".process_material as ParticleProcessMaterial).emission_box_extents.y = size.y / 2

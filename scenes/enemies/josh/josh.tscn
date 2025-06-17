@@ -1,0 +1,329 @@
+[gd_scene load_steps=43 format=3 uid="uid://cbsedkobed4ik"]
+
+[ext_resource type="Script" uid="uid://qf76i2m02we1" path="res://scenes/enemies/josh/josh.gd" id="1_b68nq"]
+[ext_resource type="Texture2D" uid="uid://drv84wxu5yyvy" path="res://images/shadow.png" id="2_eown8"]
+[ext_resource type="Texture2D" uid="uid://ch5axhisdpt4q" path="res://images/particles/footsteps.png" id="3_g2qux"]
+[ext_resource type="Texture2D" uid="uid://dr1o3tej1f7mu" path="res://images/enemies/josh/idle_1.png" id="6_wk0yv"]
+[ext_resource type="Texture2D" uid="uid://dnlq0a6fxqko0" path="res://images/enemies/josh/idle_2.png" id="7_hij05"]
+[ext_resource type="Texture2D" uid="uid://85x7lbwq67qu" path="res://images/enemies/josh/run_1.png" id="8_2sclo"]
+[ext_resource type="Texture2D" uid="uid://cqouhsahe8itk" path="res://images/enemies/josh/run_2.png" id="9_eown8"]
+[ext_resource type="Texture2D" uid="uid://dcx85bie00mg4" path="res://images/enemies/josh/attack_1.png" id="10_2sclo"]
+[ext_resource type="Texture2D" uid="uid://bnmya2vxistmg" path="res://images/enemies/josh/attack_2.png" id="11_eown8"]
+[ext_resource type="Texture2D" uid="uid://cpe0fkpomu8hf" path="res://images/player/weapon_idle_1.png" id="12_mvpkc"]
+[ext_resource type="Texture2D" uid="uid://bps6sleyuegis" path="res://images/player/weapon_idle_2.png" id="13_n80s6"]
+[ext_resource type="Texture2D" uid="uid://bcwuq2wq0w2tg" path="res://images/player/weapon_run_1.png" id="14_ohtjn"]
+[ext_resource type="AnimationLibrary" uid="uid://cr3eryama6a7r" path="res://character_anims.res" id="14_sps46"]
+[ext_resource type="Texture2D" uid="uid://5xnn3s6nc6oe" path="res://images/player/weapon_run_2.png" id="15_5rk66"]
+[ext_resource type="Texture2D" uid="uid://dxn0mbadq4t8a" path="res://images/enemies/alert.png" id="16_rn4xc"]
+[ext_resource type="Texture2D" uid="uid://8l2jjqfjsnxg" path="res://images/enemies/death.png" id="17_ww5n0"]
+[ext_resource type="AudioStream" uid="uid://bxqlb00owt0yo" path="res://sounds/footsteps/footstep_1.wav" id="18_4qnm7"]
+[ext_resource type="AudioStream" uid="uid://bpqvm4mylltqy" path="res://sounds/footsteps/footstep_2.wav" id="19_nrcuo"]
+[ext_resource type="AudioStream" uid="uid://bq2e8q3gfupqo" path="res://sounds/enemies/alert.wav" id="20_j5je6"]
+[ext_resource type="PackedScene" uid="uid://blgmfgum1gf63" path="res://scenes/ui/health_bar.tscn" id="21_x2l01"]
+[ext_resource type="AudioStream" uid="uid://cignnr3g3u44l" path="res://sounds/hurt.wav" id="22_uqdx7"]
+[ext_resource type="Texture2D" uid="uid://bsbhnvushm1wa" path="res://images/particles/hit.png" id="23_70ki1"]
+[ext_resource type="AudioStream" uid="uid://dn4he5d8kt427" path="res://sounds/death.wav" id="24_vpoym"]
+
+[sub_resource type="Curve" id="Curve_behe2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_irwyp"]
+curve = SubResource("Curve_behe2")
+
+[sub_resource type="Gradient" id="Gradient_epd02"]
+interpolation_mode = 2
+colors = PackedColorArray(0.43134, 0.43134, 0.43134, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k5rp0"]
+gradient = SubResource("Gradient_epd02")
+
+[sub_resource type="Curve" id="Curve_xfiav"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.626667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_piq4r"]
+curve = SubResource("Curve_xfiav")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhvml"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+radial_velocity_min = -40.0
+radial_velocity_max = 40.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_piq4r")
+color_ramp = SubResource("GradientTexture1D_k5rp0")
+anim_speed_curve = SubResource("CurveTexture_irwyp")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bh2qp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wk0yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hij05")
+}],
+"loop": true,
+"name": &"alert",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wk0yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hij05")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2sclo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_eown8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_2sclo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eown8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2sclo")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mvpkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_n80s6")
+}],
+"loop": true,
+"name": &"weapon_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ohtjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5rk66")
+}],
+"loop": true,
+"name": &"weapon_run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b68nq"]
+radius = 500.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dk0tv"]
+random_pitch = 2.0
+random_volume_offset_db = 1.4
+streams_count = 2
+stream_0/stream = ExtResource("18_4qnm7")
+stream_1/stream = ExtResource("19_nrcuo")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vkvym"]
+radius = 19.0
+height = 70.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ppb7l"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("22_uqdx7")
+
+[sub_resource type="Gradient" id="Gradient_6kd5u"]
+colors = PackedColorArray(0.800491, 0.800491, 0.800491, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_edfdo"]
+gradient = SubResource("Gradient_6kd5u")
+
+[sub_resource type="Curve" id="Curve_pmtpy"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 1.14286), 0.0, 1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q2178"]
+curve = SubResource("Curve_pmtpy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a4dvo"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 400, 0)
+radial_accel_min = -40.0
+radial_accel_max = 40.0
+scale_curve = SubResource("CurveTexture_q2178")
+color_initial_ramp = SubResource("GradientTexture1D_edfdo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r5rfb"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("24_vpoym")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojqbo"]
+radius = 12.0
+height = 48.0
+
+[node name="Josh" type="CharacterBody2D"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+collision_layer = 4
+collision_mask = 20
+motion_mode = 1
+script = ExtResource("1_b68nq")
+speed = 2000.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.246)
+position = Vector2(-1, 0)
+texture = ExtResource("2_eown8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("3_g2qux")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_uhvml")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("3_g2qux")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_uhvml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -29)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_bh2qp")
+animation = &"alert"
+speed_scale = 0.4
+
+[node name="RunAnim" type="AnimationPlayer" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+libraries = {
+&"": ExtResource("14_sps46")
+}
+autoplay = "idle"
+speed_scale = 2.0
+
+[node name="SightCast" type="ShapeCast2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-10, -14)
+scale = Vector2(1, -1)
+shape = SubResource("CircleShape2D_b68nq")
+target_position = Vector2(0, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Alert" type="Sprite2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(-0.697247, -7.96956)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_rn4xc")
+
+[node name="Death" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("17_ww5n0")
+
+[node name="FootstepSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dk0tv")
+volume_db = 5.0
+
+[node name="XCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="YCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+position = Vector2(-1, -31)
+shape = SubResource("CapsuleShape2D_vkvym")
+
+[node name="AlertSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_j5je6")
+
+[node name="HealthBar" parent="." instance=ExtResource("21_x2l01")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -72.0
+offset_right = 56.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ppb7l")
+
+[node name="HurtParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -24)
+emitting = false
+amount = 15
+texture = ExtResource("23_70ki1")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_a4dvo")
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_r5rfb")
+volume_db = -5.0
+pitch_scale = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ojqbo")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="EscapeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="damaged" from="." to="." method="_on_damaged"]
+[connection signal="damaged" from="." to="HurtSFX" method="play" unbinds=2]
+[connection signal="damaged" from="." to="HurtParticles" method="restart" unbinds=2]
+[connection signal="death" from="." to="." method="_on_death"]
+[connection signal="death" from="." to="DeathSFX" method="play" unbinds=1]
+[connection signal="animation_finished" from="AnimatedSprite2D/RunAnim" to="." method="_on_run_anim_animation_finished"]
+[connection signal="current_animation_changed" from="AnimatedSprite2D/RunAnim" to="." method="_on_run_anim_current_animation_changed"]
+[connection signal="timeout" from="AttackTimer" to="." method="begin_throw"]

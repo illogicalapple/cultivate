@@ -4,6 +4,7 @@ signal triggered
 
 @export var effect_scene: PackedScene
 @export var card: String
+@export var is_menu: bool = false
 
 ## Size of the AOE sprite png (circle). Check multiplier in figma
 @export var aoe_sprite_size: float = 400
@@ -44,6 +45,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func play_effect():
 	var effect_instance = effect_scene.instantiate()
-	effect_instance.global_position = (get_global_mouse_position() - get_viewport_rect().size / 2) / get_viewport().get_camera_2d().zoom + get_viewport().get_camera_2d().global_position
+	if not is_menu: effect_instance.global_position = (get_global_mouse_position() - get_viewport_rect().size / 2) / get_viewport().get_camera_2d().zoom + get_viewport().get_camera_2d().global_position
 	get_parent().add_sibling(effect_instance)
 	triggered.emit()

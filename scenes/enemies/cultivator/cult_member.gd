@@ -61,7 +61,7 @@ func _on_damaged(amount: float, origin: Character) -> void:
 	
 	activate()
 
-func _on_death(_origin: Character) -> void:
+func _on_death(_origin: Character, _death_message: String) -> void:
 	disabled = true
 	%RunAnim.play("death")
 	$HealthBar.hide()
@@ -89,6 +89,7 @@ func throw_onigiri() -> void:
 	onigiri.global_position = global_position + Vector2(29 * facing, -29) # Magic number. Check end of animation for accuracy
 	onigiri.facing = facing
 	onigiri.velocity = Vector2(facing * 900, 0)
+	onigiri.death_message = "you took a rice ball to the face"
 	onigiri.damage_amount = 20
 	onigiri.origin = self
 	add_sibling(onigiri)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://td5ws7e0qvn1"]
+
+[ext_resource type="Script" uid="uid://cp42deqbaqu86" path="res://scenes/attacks/menu_quit.gd" id="1_qmc6y"]
+
+[node name="MenuQuit" type="Node"]
+script = ExtResource("1_qmc6y")

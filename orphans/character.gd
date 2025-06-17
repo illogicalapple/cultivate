@@ -1,16 +1,18 @@
 class_name Character extends CharacterBody2D
 
 signal damaged(amount: float, origin: Character)
-signal death(origin: Character)
+signal death(origin: Character, death_message: String)
 
 @export var speed: float = 1400
 @export var max_health: float = 100
 @export var kb_coefficient: float = 400.0
 @export var disabled: bool = false
+@export var default_scale: Vector2 = Vector2(1, 1)
 @export_range(-1, 1) var start_facing: int = 1
 
 var facing: int = 1
 var animation_queue: StringName = &""
+var dead = false
 
 @onready var health: float = max_health:
 	set(new_health):
@@ -53,7 +55,7 @@ class EffectManager:
 
 func _ready() -> void:
 	facing = start_facing
-	$AnimatedSprite2D.scale.x = -facing
+	$AnimatedSprite2D.scale.x = -facing * abs(default_scale.x)
 
 func move(direction, delta):
 	if disabled: return
@@ -73,7 +75,7 @@ func move(direction, delta):
 		
 		var scale_tw = get_tree().create_tween() \
 			.set_trans(Tween.TRANS_CUBIC)
-		scale_tw.tween_property($AnimatedSprite2D, "scale", Vector2(- facing, 1), 0.15)
+		scale_tw.tween_property($AnimatedSprite2D, "scale", Vector2(-facing * abs(default_scale.x), default_scale.y), 0.15)
 
 func collide(velocity: Vector2) -> Vector2:
 	if disabled: return Vector2(0, 0)
@@ -103,10 +105,13 @@ func _on_run_anim_current_animation_changed(name: String) -> void:
 	else:
 		$AnimatedSprite2D.animation = "idle"
 
-func damage(amount: float, origin: Character, projectile_velocity: Vector2 = Vector2(40000, 0), kb_multiplier: float = 1.0):
-
+func damage(amount: float, origin: Character, death_message: String, projectile_velocity: Vector2 = Vector2(40000, 0), kb_multiplier: float = 1.0):
+	if dead: return
+	
 	health -= amount
 	velocity += (global_position - origin.position if projectile_velocity == Vector2(40000, 0) else projectile_velocity).normalized() * kb_coefficient * kb_multiplier
 	
 	damaged.emit(amount, origin)
-	if health <= 0: death.emit(origin)
+	if health <= 0:
+		death.emit(origin, death_message)
+		dead = true

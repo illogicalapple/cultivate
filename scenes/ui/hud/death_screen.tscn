@@ -1,0 +1,188 @@
+[gd_scene load_steps=6 format=3 uid="uid://co4e3qb0t8ukh"]
+
+[ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="1_0jte0"]
+[ext_resource type="Script" uid="uid://mr6e8b8n112h" path="res://scenes/ui/hud/death_screen.gd" id="2_ch78j"]
+
+[sub_resource type="Animation" id="Animation_ch78j"]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.833333, 0.844444, 0.855555, 0.866667, 0.877778, 0.888889, 0.9, 0.911111, 0.922222, 0.933333, 0.944444, 0.955555, 0.966667, 0.977778, 0.988889, 1, 1.01111, 1.02222, 1.03333, 1.04444, 1.05556, 1.06667, 1.07778, 1.08889, 1.1, 1.11111, 1.12222, 1.13333, 1.14444, 1.15556, 1.16667, 1.17778, 1.18889, 1.2, 1.21111, 1.22222, 1.23333, 1.24444, 1.25556, 1.26667, 1.27778, 1.28889, 1.3, 1.31111, 1.32222, 1.33333, 1.34444, 1.35556, 1.36667, 1.37778, 1.38889, 1.4, 1.41111, 1.42222, 1.43333, 1.44444, 1.45556, 1.46667, 1.47778, 1.48889, 1.5, 1.51111, 1.52222, 1.53333, 1.54444, 1.55556, 1.56667, 1.57778, 1.58889, 1.6, 1.61111, 1.62222, 1.63333, 1.64444, 1.65556, 1.66667, 1.67778, 1.68889, 1.7, 1.71111, 1.72222, 1.73333, 1.74444, 1.75556, 1.76667, 1.77778, 1.78889, 1.8, 1.81111, 1.82222, 1.83333),
+"transitions": PackedFloat32Array(2.2974, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.2974),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(3.99984, 3.99984), Vector2(3.99958, 3.99958), Vector2(3.99931, 3.99931), Vector2(3.99901, 3.99901), Vector2(3.99869, 3.99869), Vector2(3.99835, 3.99835), Vector2(3.99798, 3.99798), Vector2(3.99758, 3.99758), Vector2(3.99714, 3.99714), Vector2(3.99667, 3.99667), Vector2(3.99616, 3.99616), Vector2(3.99562, 3.99562), Vector2(3.99503, 3.99503), Vector2(3.99439, 3.99439), Vector2(3.9937, 3.9937), Vector2(3.99295, 3.99295), Vector2(3.99215, 3.99215), Vector2(3.99128, 3.99128), Vector2(3.99034, 3.99034), Vector2(3.98933, 3.98933), Vector2(3.98824, 3.98824), Vector2(3.98705, 3.98705), Vector2(3.98578, 3.98578), Vector2(3.9844, 3.9844), Vector2(3.98291, 3.98291), Vector2(3.9813, 3.9813), Vector2(3.97956, 3.97956), Vector2(3.97769, 3.97769), Vector2(3.97566, 3.97566), Vector2(3.97347, 3.97347), Vector2(3.97111, 3.97111), Vector2(3.96855, 3.96855), Vector2(3.9658, 3.9658), Vector2(3.96282, 3.96282), Vector2(3.9596, 3.9596), Vector2(3.95613, 3.95613), Vector2(3.95237, 3.95237), Vector2(3.94832, 3.94832), Vector2(3.94394, 3.94394), Vector2(3.93921, 3.93921), Vector2(3.93411, 3.93411), Vector2(3.92859, 3.92859), Vector2(3.92263, 3.92263), Vector2(3.9162, 3.9162), Vector2(3.90925, 3.90925), Vector2(3.90174, 3.90174), Vector2(3.89364, 3.89364), Vector2(3.88488, 3.88488), Vector2(3.87543, 3.87543), Vector2(3.86521, 3.86521), Vector2(3.85418, 3.85418), Vector2(3.84227, 3.84227), Vector2(3.8294, 3.8294), Vector2(3.8155, 3.8155), Vector2(3.80049, 3.80049), Vector2(3.78428, 3.78428), Vector2(3.76676, 3.76676), Vector2(3.74785, 3.74785), Vector2(3.72742, 3.72742), Vector2(3.70536, 3.70536), Vector2(3.68153, 3.68153), Vector2(3.6558, 3.6558), Vector2(3.628, 3.628), Vector2(3.59798, 3.59798), Vector2(3.56555, 3.56555), Vector2(3.53053, 3.53053), Vector2(3.4927, 3.4927), Vector2(3.45185, 3.45185), Vector2(3.40772, 3.40772), Vector2(3.36007, 3.36007), Vector2(3.30859, 3.30859), Vector2(3.253, 3.253), Vector2(3.19296, 3.19296), Vector2(3.1281, 3.1281), Vector2(3.05806, 3.05806), Vector2(2.98241, 2.98241), Vector2(2.9007, 2.9007), Vector2(2.81245, 2.81245), Vector2(2.71713, 2.71713), Vector2(2.61419, 2.61419), Vector2(2.503, 2.503), Vector2(2.38291, 2.38291), Vector2(2.25321, 2.25321), Vector2(2.11312, 2.11312), Vector2(1.96182, 1.96182), Vector2(1.7984, 1.7984), Vector2(1.6219, 1.6219), Vector2(1.43127, 1.43127), Vector2(1.22538, 1.22538), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.833333, 1.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:time_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.63333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.7, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kvq81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:time_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7itmg"]
+_data = {
+&"RESET": SubResource("Animation_kvq81"),
+&"death": SubResource("Animation_ch78j")
+}
+
+[node name="DeathScreen" type="ColorRect"]
+process_mode = 3
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 200
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0jte0")
+color = Color(0, 0, 0, 0.721569)
+script = ExtResource("2_ch78j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.5
+offset_top = -47.0
+offset_right = 262.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_constants/separation = 32
+
+[node name="YouDied" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[outline_size=18][wave]you died. loser.[/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="CauseOfDeath" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "cause of death: you nuked yourself (???)"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7itmg")
+}

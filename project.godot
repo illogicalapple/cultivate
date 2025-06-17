@@ -16,12 +16,17 @@ warnings/check_invalid_track_paths=false
 
 config/name="cultivate"
 run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
 [autoload]
 
 Inventory="*res://orphans/global/inventory.gd"
+
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [global_group]
 
@@ -30,6 +35,7 @@ rice_ui="rice bowl that rice particles move toward"
 inventory=""
 replace_card="Card replace ui"
 ui_card=""
+main_menu=""
 
 [input]
 
@@ -88,3 +94,7 @@ click={
 2d_physics/layer_4="Unfriendly"
 2d_physics/layer_5="Wall"
 2d_physics/layer_6="Player"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

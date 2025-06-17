@@ -7,5 +7,3 @@ extends Projectile2D
 func _process(delta):
 	position += velocity * delta
 	$Sprite2D.rotation_degrees += rotational_velocity * delta
-	
-	velocity.y += delta * 980

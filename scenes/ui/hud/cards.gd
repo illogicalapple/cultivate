@@ -1,12 +1,20 @@
 extends Control
 
+@export var is_menu: bool = false
+
 var card_mini: PackedScene = preload("res://scenes/ui/hud/card_mini.tscn")
 var dragging: bool = false
 var hovering: bool = false
 var hovering_visually: bool = false
 
+func _ready():
+	if is_menu: return
+	%Settings.hide()
+	%Quit.hide()
+	%Play.hide()
+
 func _on_hover_detect_mouse_entered() -> void:
-	if get_tree().get_first_node_in_group("inventory").inventory_open: return
+	if not is_menu and get_tree().get_first_node_in_group("inventory").inventory_open: return
 	if hovering: return
 	hovering = true
 	if dragging: return
@@ -15,7 +23,8 @@ func _on_hover_detect_mouse_entered() -> void:
 	$HoverSFX.play()
 
 func _on_hover_detect_mouse_exited() -> void:
-	if get_tree().get_first_node_in_group("inventory").inventory_open: return
+	if is_menu: return
+	if not is_menu and get_tree().get_first_node_in_group("inventory").inventory_open: return
 	if not hovering: return
 	hovering = false
 	if dragging: return
@@ -28,6 +37,7 @@ func on_drag_started(card_target: TextureRect) -> void:
 	instance.position = get_global_mouse_position()
 	instance.card = card_target.card
 	instance.triggered.connect(card_target.trigger)
+	instance.is_menu = is_menu
 	add_sibling(instance)
 	start_dragging()
 

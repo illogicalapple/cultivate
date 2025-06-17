@@ -1,10 +1,13 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b2bk3lpeie613"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b2bk3lpeie613"]
 
 [ext_resource type="FontFile" uid="uid://b3b34s8f8tvb4" path="res://fonts/mini-wakuwaku/mini-wakuwaku.otf" id="1_5tnil"]
+[ext_resource type="FontFile" uid="uid://d142l7b31la3n" path="res://fonts/mini-wakuwaku/mini-wakuwaku-maru.otf" id="1_vj6dk"]
 [ext_resource type="FontVariation" uid="uid://bu102qsgvj0j4" path="res://fonts/mini-wakuwaku/mini-wakuwaku-bold.tres" id="2_161dk"]
 
 [resource]
 default_font_size = 24
+Button/constants/outline_size = 16
+Button/fonts/font = ExtResource("1_vj6dk")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 15
 Label/fonts/font = ExtResource("1_5tnil")

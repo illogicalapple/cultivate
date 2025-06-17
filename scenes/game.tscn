@@ -1,19 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=25 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
+[ext_resource type="Script" uid="uid://ci0nd2d6mqdow" path="res://scenes/game.gd" id="1_rysoc"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
 [ext_resource type="PackedScene" uid="uid://bsnyjj1dntrib" path="res://scenes/platforms/platform_normal.tscn" id="3_714ad"]
 [ext_resource type="PackedScene" uid="uid://buvlxtq0svcsd" path="res://scenes/enemies/cultivator/cult_member.tscn" id="4_04qk5"]
+[ext_resource type="PackedScene" uid="uid://cbsedkobed4ik" path="res://scenes/enemies/josh/josh.tscn" id="5_ir15t"]
 [ext_resource type="PackedScene" uid="uid://safp180fn361" path="res://scenes/objects/door.tscn" id="5_nsl0c"]
 [ext_resource type="PackedScene" uid="uid://c6aamvcmupg7h" path="res://scenes/ui/hud/cards.tscn" id="5_ouykd"]
 [ext_resource type="PackedScene" uid="uid://cnb5otusbx3mm" path="res://scenes/objects/card_drop.tscn" id="6_03v8o"]
 [ext_resource type="Texture2D" uid="uid://bv28g70lyq4ce" path="res://images/ui/rice.png" id="6_u46st"]
 [ext_resource type="Theme" uid="uid://b2bk3lpeie613" path="res://theme.tres" id="7_wblgh"]
 [ext_resource type="Script" uid="uid://1l54owa10yup" path="res://scenes/ui/hud/rice_bowl.gd" id="8_ig4ua"]
+[ext_resource type="PackedScene" uid="uid://b5b0irp7yv1fh" path="res://scenes/enemies/boss_mener/boss.tscn" id="9_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://ejsp30dq0c57" path="res://scenes/ui/inventory/inventory.tscn" id="11_t5c00"]
 [ext_resource type="AudioStream" uid="uid://bam0ek02nk4jk" path="res://sounds/music/temp_music.mp3" id="12_4w0bt"]
 [ext_resource type="PackedScene" uid="uid://dt0trvx0b8r44" path="res://scenes/ui/inventory/replace_card.tscn" id="12_kvuet"]
 [ext_resource type="PackedScene" uid="uid://ctrpbk4r0qoja" path="res://scenes/ui/hud/effects.tscn" id="13_trtic"]
+[ext_resource type="PackedScene" uid="uid://co4e3qb0t8ukh" path="res://scenes/ui/hud/death_screen.tscn" id="15_ca42v"]
 
 [sub_resource type="Environment" id="Environment_tej1b"]
 background_mode = 3
@@ -58,7 +62,26 @@ _data = {
 &"pop": SubResource("Animation_exo2q")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssvqc"]
+bg_color = Color(0.6, 0.3, 0.3, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_264po"]
+bg_color = Color(0.8173676, 0.487354, 0.48152193, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
 [node name="Game" type="Node"]
+script = ExtResource("1_rysoc")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -132,11 +155,18 @@ position = Vector2(1591, 547)
 [node name="CultMember7" parent="Objects" instance=ExtResource("4_04qk5")]
 position = Vector2(1599, 806)
 
+[node name="Josh" parent="Objects" instance=ExtResource("5_ir15t")]
+position = Vector2(779, 253)
+start_facing = -1
+
 [node name="Door" parent="Objects" instance=ExtResource("5_nsl0c")]
 position = Vector2(2315, 776)
 
 [node name="CardDrop" parent="Objects" instance=ExtResource("6_03v8o")]
 position = Vector2(553, 247)
+
+[node name="CultMember8" parent="Objects" instance=ExtResource("9_ssvqc")]
+position = Vector2(1759, 285)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tej1b")
@@ -181,7 +211,34 @@ z_index = 2
 
 [node name="Effects" parent="UI" instance=ExtResource("13_trtic")]
 
+[node name="DeathScreen" parent="UI" instance=ExtResource("15_ca42v")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme = ExtResource("7_wblgh")
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "big chungus rice farmer"
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(512, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ssvqc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_264po")
+value = 30.0
+show_percentage = false
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("12_4w0bt")
 volume_db = -10.0
 autoplay = true

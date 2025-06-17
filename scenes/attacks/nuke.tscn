@@ -322,12 +322,14 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_5ykmb")
 
 [node name="ExplodeAnimation" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_io10n")
 }
 autoplay = "explode"
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("4_n1d30")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]

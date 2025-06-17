@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://buwkdc56ob2vo"
-path="res://.godot/imported/inventory.wav-70ef6365f4311652c64fe8df28cdcf00.sample"
+uid="uid://baujuuv70uhkg"
+path="res://.godot/imported/spit.wav-4e3be37dc77bd8ef15b1c56deacf5af4.sample"
 
 [deps]
 
-source_file="res://sounds/ui/inventory.wav"
-dest_files=["res://.godot/imported/inventory.wav-70ef6365f4311652c64fe8df28cdcf00.sample"]
+source_file="res://sounds/enemies/spit.wav"
+dest_files=["res://.godot/imported/spit.wav-4e3be37dc77bd8ef15b1c56deacf5af4.sample"]
 
 [params]
 
