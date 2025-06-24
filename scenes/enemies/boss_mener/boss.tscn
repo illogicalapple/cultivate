@@ -1,12 +1,14 @@
-[gd_scene load_steps=42 format=3 uid="uid://b5b0irp7yv1fh"]
+[gd_scene load_steps=44 format=3 uid="uid://b5b0irp7yv1fh"]
 
 [ext_resource type="Script" uid="uid://c11grhd6eo0qp" path="res://scenes/enemies/cultivator/cult_member.gd" id="1_tsdx8"]
 [ext_resource type="Texture2D" uid="uid://drv84wxu5yyvy" path="res://images/shadow.png" id="2_nm1aq"]
 [ext_resource type="Texture2D" uid="uid://ch5axhisdpt4q" path="res://images/particles/footsteps.png" id="3_dnc8m"]
 [ext_resource type="Texture2D" uid="uid://cxwdqha2x1g4c" path="res://images/enemies/cultivator/idle_1.png" id="4_tmjwt"]
 [ext_resource type="Texture2D" uid="uid://coifk3xlvbpmk" path="res://images/enemies/cultivator/idle_2.png" id="5_vblie"]
+[ext_resource type="Texture2D" uid="uid://mnvkwt528epy" path="res://images/enemies/boss_phantom_guy/idle_1.png" id="6_nm1aq"]
 [ext_resource type="Texture2D" uid="uid://dbveapuha0a7k" path="res://images/enemies/cultivator/run_1.png" id="6_opi08"]
 [ext_resource type="Texture2D" uid="uid://s15np2jo7qj4" path="res://images/enemies/cultivator/run_2.png" id="7_5dff4"]
+[ext_resource type="Texture2D" uid="uid://bfsgy3qtrxdrk" path="res://images/enemies/boss_phantom_guy/idle_2.png" id="7_dnc8m"]
 [ext_resource type="Texture2D" uid="uid://biviwtdtiiavr" path="res://images/enemies/cultivator/throw_1.png" id="8_k06vj"]
 [ext_resource type="Texture2D" uid="uid://8201ftuaw68q" path="res://images/enemies/cultivator/throw_2.png" id="9_lphrd"]
 [ext_resource type="Texture2D" uid="uid://cpe0fkpomu8hf" path="res://images/player/weapon_idle_1.png" id="10_glkhe"]
@@ -75,10 +77,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_tmjwt")
+"texture": ExtResource("6_nm1aq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_vblie")
+"texture": ExtResource("7_dnc8m")
 }],
 "loop": true,
 "name": &"idle",
@@ -140,8 +142,8 @@ stream_0/stream = ExtResource("17_2revh")
 stream_1/stream = ExtResource("18_ioi8h")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vkvym"]
-radius = 58.0
-height = 196.0
+radius = 68.0
+height = 200.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ppb7l"]
 random_pitch = 1.4
@@ -191,11 +193,10 @@ script = ExtResource("1_tsdx8")
 speed = 1000.0
 max_health = 200.0
 kb_coefficient = 200.0
-default_scale = Vector2(3, 3)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.246)
-position = Vector2(-6, -5)
+position = Vector2(-4.9999995, -5)
 scale = Vector2(3.015625, 2.5416667)
 texture = ExtResource("2_nm1aq")
 
@@ -218,8 +219,8 @@ explosiveness = 0.6
 process_material = SubResource("ParticleProcessMaterial_uhvml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -94)
-scale = Vector2(-3, 3)
+position = Vector2(-13, -142)
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_bepwr")
 animation = &"idle"
 speed_scale = 0.4
@@ -269,6 +270,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, -56)
 collision_layer = 8
 collision_mask = 0
 

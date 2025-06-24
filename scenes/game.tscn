@@ -1,11 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://div6qt6nqcny5"]
+[gd_scene load_steps=24 format=3 uid="uid://div6qt6nqcny5"]
 
 [ext_resource type="PackedScene" uid="uid://bx2jyrehfevui" path="res://scenes/player/player.tscn" id="1_rbhu5"]
 [ext_resource type="Script" uid="uid://ci0nd2d6mqdow" path="res://scenes/game.gd" id="1_rysoc"]
 [ext_resource type="Texture2D" uid="uid://cjjae1r5f4tsv" path="res://images/bricks.png" id="2_mpcv1"]
 [ext_resource type="PackedScene" uid="uid://bsnyjj1dntrib" path="res://scenes/platforms/platform_normal.tscn" id="3_714ad"]
 [ext_resource type="PackedScene" uid="uid://buvlxtq0svcsd" path="res://scenes/enemies/cultivator/cult_member.tscn" id="4_04qk5"]
-[ext_resource type="PackedScene" uid="uid://cbsedkobed4ik" path="res://scenes/enemies/josh/josh.tscn" id="5_ir15t"]
 [ext_resource type="PackedScene" uid="uid://safp180fn361" path="res://scenes/objects/door.tscn" id="5_nsl0c"]
 [ext_resource type="PackedScene" uid="uid://c6aamvcmupg7h" path="res://scenes/ui/hud/cards.tscn" id="5_ouykd"]
 [ext_resource type="PackedScene" uid="uid://cnb5otusbx3mm" path="res://scenes/objects/card_drop.tscn" id="6_03v8o"]
@@ -155,10 +154,6 @@ position = Vector2(1591, 547)
 [node name="CultMember7" parent="Objects" instance=ExtResource("4_04qk5")]
 position = Vector2(1599, 806)
 
-[node name="Josh" parent="Objects" instance=ExtResource("5_ir15t")]
-position = Vector2(779, 253)
-start_facing = -1
-
 [node name="Door" parent="Objects" instance=ExtResource("5_nsl0c")]
 position = Vector2(2315, 776)
 
@@ -213,7 +208,7 @@ z_index = 2
 
 [node name="DeathScreen" parent="UI" instance=ExtResource("15_ca42v")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+[node name="BossBar" type="VBoxContainer" parent="UI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -225,11 +220,11 @@ grow_horizontal = 2
 theme = ExtResource("7_wblgh")
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="UI/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/BossBar"]
 layout_mode = 2
-text = "big chungus rice farmer"
+text = "phantom pharmer"
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/BossBar"]
 custom_minimum_size = Vector2(512, 8)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ssvqc")
