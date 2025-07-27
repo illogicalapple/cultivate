@@ -1,11 +1,1 @@
 res://default_bus_layout.tres
-res://scenes/game.tscn
-res://shaders/blur.gdshader
-res://shaders/scroll.gdshader
-res://shaders/iris.gdshader
-res://shaders/outline.gdshader
-res://shaders/non_visible.gdshader
-res://shaders/pixel.gdshader
-res://scenes/game.gd
-res://scenes/enemies/boss_mener/boss.tscn
-res://scenes/ui/hud/card.gd

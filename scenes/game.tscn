@@ -124,7 +124,7 @@ size = Vector2(500, 100)
 y_sort_enabled = true
 
 [node name="Player" parent="Objects" instance=ExtResource("1_rbhu5")]
-position = Vector2(236, 230)
+position = Vector2(1540, 230)
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player"]
 ignore_rotation = false
@@ -160,7 +160,7 @@ position = Vector2(2315, 776)
 [node name="CardDrop" parent="Objects" instance=ExtResource("6_03v8o")]
 position = Vector2(553, 247)
 
-[node name="CultMember8" parent="Objects" instance=ExtResource("9_ssvqc")]
+[node name="Boss" parent="Objects" instance=ExtResource("9_ssvqc")]
 position = Vector2(1759, 285)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

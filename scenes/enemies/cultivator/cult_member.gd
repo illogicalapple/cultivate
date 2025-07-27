@@ -51,7 +51,10 @@ func _process(delta) -> void:
 		target = %SightCast.get_collider()
 		will_activate = true
 
-func activate() -> void:
+func activate(origin: Character = self) -> void:
+	if origin != self:
+		target = origin
+		
 	activated = true
 
 func _on_damaged(amount: float, origin: Character) -> void:

@@ -8,6 +8,7 @@ signal death(origin: Character, death_message: String)
 @export var kb_coefficient: float = 400.0
 @export var disabled: bool = false
 @export var default_scale: Vector2 = Vector2(1, 1)
+@export var floaty: bool = false
 @export_range(-1, 1) var start_facing: int = 1
 
 var facing: int = 1
@@ -57,7 +58,7 @@ func _ready() -> void:
 	facing = start_facing
 	$AnimatedSprite2D.scale.x = -facing * abs(default_scale.x)
 
-func move(direction, delta):
+func move(direction, _delta):
 	if disabled: return
 	
 	move_and_slide()
@@ -92,7 +93,7 @@ func collide(velocity: Vector2) -> Vector2:
 	$YCast.target_position.y = sign(velocity.y) * 5
 	$YCast.force_raycast_update()
 
-	return Vector2(velocity.x if $XCast.is_colliding() else 0, velocity.y if $YCast.is_colliding() else 0)
+	return Vector2(velocity.x if floaty or $XCast.is_colliding() else 0, velocity.y if floaty or $YCast.is_colliding() else 0)
 
 func check_queue() -> void:
 	if animation_queue == &"": return
